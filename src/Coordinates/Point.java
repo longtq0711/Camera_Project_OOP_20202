@@ -38,13 +38,13 @@ public class Point {
 		this.z = z;
 	}
 	
-	public float callDistance(Entity entity) {
-		//Khoang cach den Entity
-	}
-	
-	public boolean isInEntity(Entity entity) {
-		//Kiem tra xem co co trong Entity khong
-	}
+//	public float callDistance(Entity entity) {
+//		//Khoang cach den Entity
+//	}
+//
+//	public boolean isInEntity(Entity entity) {
+//		//Kiem tra xem co co trong Entity khong
+//	}
 	
 
 }
