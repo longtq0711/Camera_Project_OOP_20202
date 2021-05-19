@@ -52,14 +52,16 @@ public class Plane {
 
 	public Plane(Point A, Point B, Point C) {
 		// ax + by + cz = d
-		Vector AB = new Vector(A, B);
-		Vector AC = new Vector(A, C);
-		Vector normal = new Vector(AB, AC);// vector phap tuyen
-		 a = normal.getX();
-		 b = normal.getY();
-		 c = normal.getZ();
-		 d = -(a*A.getX() + b*A.getY() + c*A.getZ());
-		 area = (float)Math.sqrt( a * a + b * b + c * c);
+		if(isTruePlane(A,B,C)) {
+			Vector AB = new Vector(A, B);
+			Vector AC = new Vector(A, C);
+			Vector normal = new Vector(AB, AC);// vector phap tuyen
+			 a = normal.getX();
+			 b = normal.getY();
+			 c = normal.getZ();
+			 d = -(a*A.getX() + b*A.getY() + c*A.getZ());
+			 area = (float)Math.sqrt( a * a + b * b + c * c);
+		}
 	}
 
 	public boolean isInThePlane(Point A) { // Kiem tra diem thuoc mat phang
@@ -72,6 +74,22 @@ public class Plane {
 		return d / e;
 	}
 
-
+	public boolean isTruePlane(Point A, Point B, Point C) { // Kiem tra xem 3 diem co nam o mat phang phu hop khong ( may day, mat ben)
+		if( ((A.getX() == B.getX()) && (B.getX() == C.getX())) 
+			|| ((A.getY() == B.getY()) && (B.getY() == C.getY())) 
+			|| ((A.getZ() == B.getZ()) && (B.getZ() == C.getZ()))) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isTruePlane(Point A, Point B, Point C, Point D) { // Kiem tra xem 4 diem co nam o mat phang phu hop khong ( may day, mat ben)
+		if( ((A.getX() == B.getX()) && (B.getX() == C.getX()) && (C.getX() == D.getX())) 
+			|| ((A.getY() == B.getY()) && (B.getY() == C.getY()) && (C.getY() == D.getY())) 
+			|| ((A.getZ() == B.getZ()) && (B.getZ() == C.getZ()) && (C.getZ() == D.getZ()))) {
+			return true;
+		}
+		return false;
+	}
 
 }
