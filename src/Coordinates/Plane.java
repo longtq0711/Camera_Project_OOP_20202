@@ -1,10 +1,9 @@
 package Coordinates;
 
 public class Plane {
-<<<<<<< HEAD
 	public Plane() {
 		// TODO Auto-generated constructor stub
-=======
+	}
 	private float a;
 	private float b;
 	private float c;
@@ -13,7 +12,6 @@ public class Plane {
 
 	public float getA() {
 		return a;
->>>>>>> 3ec97954f053a2ada8322b45484dffecf27c042d
 	}
 
 	public void setA(float a) {

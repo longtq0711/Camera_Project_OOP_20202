@@ -37,7 +37,14 @@ public class Point {
 	public void setZ(float z) {
 		this.z = z;
 	}
-	
+	public float Length(Point a, Point b)
+	{
+		//Khoang cach giua 2 diem
+		float x = (a.getX()-b.getX())*(a.getX()-b.getX());
+		float y = (a.getY()-b.getY())*(a.getY()-b.getY());
+		float z = (a.getZ()-b.getZ())*(a.getZ()-b.getZ());
+		return (float) Math.sqrt(x + y + z);
+	}
 //	public float callDistance(Entity entity) {
 //		//Khoang cach den Entity
 //	}

@@ -1,7 +1,6 @@
 import Coordinates.Point;
 public class Entity {
 	private float x,y,z;
-<<<<<<< HEAD
 	private Point A1;
 	private Point A2;
 	private Point A3;
@@ -10,17 +9,7 @@ public class Entity {
 	private Point A6;
 	private Point A7;
 	private Point A8;
-=======
-//	private Point A1;
-//	public Point A2;
-//	public Point A3;
-//	public Point A4;
-//	public Point A5;
-//	public Point A6;
-//	public Point A7;
-//	public Point A8;
->>>>>>> 3ec97954f053a2ada8322b45484dffecf27c042d
-	
+
 	public Entity() {
 		// TODO Auto-generated constructor stub
 		super();
