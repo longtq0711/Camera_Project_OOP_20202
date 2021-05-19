@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-import hust.soict.hedspi.aims.order.Order;
+
 public class main {
 	public static void showMenu() {
 		System.out.println("Functions: ");
