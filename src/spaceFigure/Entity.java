@@ -1,19 +1,25 @@
 package spaceFigure;
+import Coordinates.Plane;
 import Coordinates.Point;
 public class Entity {
-	private float x,y,z;
-	private Point A1;
-	private Point A2;
-	private Point A3;
-	private Point A4;
-	private Point A5;
-	private Point A6;
-	private Point A7;
-	private Point A8;
 
-	public Entity() {
-		// TODO Auto-generated constructor stub
-		super();
+	private Point[] points = new Point[8];
+	private Plane[] planes = new Plane[8];
+	private int countPoint = 0;
+	private int countPlane = 0;
+
+	public void addPoint(Point point){
+		points[countPoint++] = point;
+	}
+
+	public String printListPoint (){
+		String rs = "";
+		for (int i = 0; i < countPoint; i++) {
+			rs += " (" + points[i].getX() + ", " + points[i].getY() + ", " + points[i].getZ() +") ";
+
+		}
+
+		return rs;
 	}
 	
 //	public boolean isValid(float x,float y,float z){
