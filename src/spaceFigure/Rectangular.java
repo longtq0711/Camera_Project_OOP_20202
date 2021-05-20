@@ -1,80 +1,77 @@
 package spaceFigure;
 import java.util.ArrayList;
+import java.util.List;
 
+import Coordinates.Plane;
 import Coordinates.Point;
+import exception.NotReactangularException;
 
 public class Rectangular {
-	private ArrayList<Point> P1 = new ArrayList<>();
-	private ArrayList<Point> P2 = new ArrayList<>();
-	private float xmax, xmin, ymax, ymin, zmax, zmin;
+
+	protected ArrayList<Point> points = new ArrayList<Point>();
+	private ArrayList<Plane> planes = new ArrayList<Plane>();
+	
+	private float xmax = Float.MIN_VALUE, ymax = Float.MIN_VALUE, zmax = Float.MIN_VALUE;
+	private float xmin = Float.MAX_VALUE, ymin = Float.MAX_VALUE, zmin = Float.MAX_VALUE;
 	public float getXmax() {
 		return xmax;
 	}
 
-	public void setXmax(float x) {
-		this.xmax = x;
-	}
-
 	public float getYmax() {
-		return ymax;
-	}
-
-	public void setYmax(float y) {
-		this.ymax = y;
+		return this.ymax;
 	}
 
 	public float getZmax() {
-		return zmax;
+		return this.zmax;
 	}
 
-	public void setZmax(float z) {
-		this.zmax = z;
-	}
 	public float getXmin() {
-		return xmin;
-	}
-
-	public void setXmin(float x) {
-		this.xmin = x;
+		return this.xmin;
 	}
 
 	public float getYmin() {
-		return ymin;
-	}
-
-	public void setYmin(float y) {
-		this.ymin = y;
+		return this.ymin;
 	}
 
 	public float getZmin() {
-		return zmin;
+		return this.zmin;
 	}
-
-	public void setZmin(float z) {
-		this.zmin = z;
+	public Rectangular(List<Point> points) {
+		super();
+		if(!isRectangular(points)) throw new NotReactangularException();
+		for(Point point : points) {
+			this.points.add(point);
+			this.xmax = Float.max(xmax, point.getX());
+			this.ymax = Float.max(ymax, point.getY());
+			this.zmax = Float.max(zmax, point.getZ());
+			this.xmin = Float.min(xmin, point.getX());
+			this.ymin = Float.min(ymin, point.getY());
+			this.zmin = Float.min(zmin, point.getZ());
+		}
 	}
-	public Rectangular() {
-		// TODO Auto-generated constructor stub
-	}
-	public boolean isRectangular(ArrayList<Point> points){
+	
+	public boolean isRectangular(List<Point> points){
+		ArrayList<Point> P1 = new ArrayList<>();
+		ArrayList<Point> P2 = new ArrayList<>();
 		//check xem co phai hhcn khong
 		int k = 0;
 		for(Point point: points) {
-			if (this.P1.isEmpty()) this.P1.add(point);
+			if (P1.isEmpty()) P1.add(point);
 			else {
-				if (point.getZ() == this.P1.get(0).getZ()) this.P1.add(point);
+				if (point.getZ() == P1.get(0).getZ()) P1.add(point);
 				else {
-					if (this.P2.isEmpty()) this.P2.add(point);
+					if (P2.isEmpty()) P2.add(point);
 					else {
-						if(point.getZ() == this.P2.get(0).getZ()) this.P2.add(point);
+						if(point.getZ() == P2.get(0).getZ()) P2.add(point);
 						else return false;
 					}
 				}
 			}
 		}
-		for(int i=0; i<this.P1.size(); i++) {
-			for(int j=0; j<this.P2.size(); j++) {
-				if((this.P1.get(i).getX() == this.P2.get(j).getX()) && (this.P1.get(i).getY() == this.P2.get(j).getY())) {
+		
+		for(int i=0; i<P1.size(); i++) {
+			for(int j=0; j<P2.size(); j++) {
+				if((P1.get(i).getX() == P2.get(j).getX()) && (P1.get(i).getY() == P2.get(j).getY())) {
 					k++;
 					continue;
 				}
@@ -84,6 +81,7 @@ public class Rectangular {
 		if (k==4) return true;
 		return false;
 	}
+	
 	public float Volume(ArrayList<Point> points) {
 		//The tich hinh hop
 		float h = points.get(0).getZ();
@@ -95,5 +93,23 @@ public class Rectangular {
 			if (point.getX()!= b) b = Math.abs(b - point.getY()); 
 		}
 		return a*b*h;
+	}
+	
+	public boolean isContain(Point point) {
+		// TODO check
+		if (point.getX() <= this.xmax && point.getX() >= this.xmin) {
+			if (point.getY() <= this.ymax && point.getY() >= this.ymin) {
+				if (point.getZ() <= this.zmax && point.getZ() >= this.zmin) 
+					return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isContain(Rectangular rectangular) {
+		for(Point point : rectangular.points) {
+			if(!this.isContain(point)) return false; 
+		}
+		return true;
 	}
 }

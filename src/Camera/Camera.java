@@ -1,7 +1,7 @@
 package Camera;
 import Coordinates.Plane;
 import Coordinates.Point;
-import Coordinates.Vector;
+import Coordinates.Vector2D;
 
 public class Camera {
 	private Point point; // toa do camera trong oxyz

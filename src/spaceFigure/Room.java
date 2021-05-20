@@ -1,45 +1,36 @@
 package spaceFigure;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Camera.Camera;
 import Coordinates.Plane;
 import Coordinates.Point;
+import exception.CannotPutEntityToRoomException;
 
-public class Room {
-
-    private Rectangular room;
-
-//    private Entity[] entities = new Entity[100];
-//    private Camera[] cameras = new Camera[100];
-//    private Point[] points = new Point[8]; // 8 diem ABCD A'B'C'D'
-//    private Plane[] planes = new Plane[6]; // 6 mat phang
+public class Room extends Rectangular {
 
     private ArrayList<Entity> entities = new ArrayList<Entity>();
     private ArrayList<Camera> cameras = new ArrayList<Camera>();
-    private ArrayList<Point> points = new ArrayList<Point>();
-    private ArrayList<Plane> planes = new ArrayList<Plane>();
-
-
-    private int countCamera = 0;
-    private int countEntity = 0;
-    private int countPoint = 0;
-    private int countPlane = 0;
-
+    
+    public Room(List<Point> points) {
+    	super(points);
+    }
+    
     public void addCamera(Camera camera) {
         cameras.add(camera);
     }
 
-    public ArrayList<Point> getPoints() {
-        return points;
-    }
-
     public void addEntity(Entity entity) {
+    	boolean check = false;
+    	// TODO check if we can add the entity to this room
+    	for(Entity currentEntity : entities) {
+    		if(currentEntity.isPutable(entity)) check = true;
+    	}
+    	
+    	if(isOnFloor(entity)) check = true;
+    	if(!check) throw new CannotPutEntityToRoomException();
         entities.add(entity);
-    }
-
-    public void addPoint(Point point) {
-        points.add(point);
     }
 
     public void printListCamera() {
@@ -61,10 +52,7 @@ public class Room {
         System.out.printf("Entities: \n" + rs);
     }
 
-
     public String printListPoint() {
-    	Rectangular r = new Rectangular() ;
-    	if(!r.isRectangular(points)) System.out.println("This room is not rectangular");
         String rs = "";
         for (int i = 0; i < points.size(); i++) {
             rs += " (" + points.get(i).getX() + ", " + points.get(i).getY() + ", " + points.get(i).getZ() + ") ";
@@ -72,7 +60,22 @@ public class Room {
         System.out.println("Point" + rs);
         return rs;
     }
-
-
-
+    
+	public boolean isInRoom(Entity entity) {
+		//check xem co nam trong phong khong
+		return this.isContain(entity);
+	}
+	public boolean isOnFloor(Entity entity) {
+		if(!isInRoom(entity)) return false;
+		//check xem co nam tren san khong
+		int count = 0;
+		if (this.isInRoom(entity)) {
+			for (int i = 0; i < points.size(); i++) {
+				if (points.get(i).getZ() == 0) count++; 
+				}
+			if (count == 4) return true;
+			else return false;
+		}
+		return false;
+	}
 }

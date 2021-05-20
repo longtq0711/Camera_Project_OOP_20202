@@ -48,7 +48,7 @@ public class Plane {
 		this.area = area;
 	}
 
-	public Plane(Point p1, Vector v) {
+	public Plane(Point p1, Vector2D v) {
 		a = v.getX();
 		b = v.getY();
 		c = v.getZ();
@@ -58,9 +58,9 @@ public class Plane {
 	public Plane(Point A, Point B, Point C) {
 		// ax + by + cz = d
 		if(isTruePlane(A,B,C)) {
-			Vector AB = new Vector(A, B);
-			Vector AC = new Vector(A, C);
-			Vector normal = new Vector(AB, AC);// vector phap tuyen
+			Vector2D AB = new Vector2D(A, B);
+			Vector2D AC = new Vector2D(A, C);
+			Vector2D normal = new Vector2D(AB, AC);// vector phap tuyen
 			 a = normal.getX();
 			 b = normal.getY();
 			 c = normal.getZ();

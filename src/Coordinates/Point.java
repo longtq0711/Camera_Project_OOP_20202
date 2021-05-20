@@ -1,6 +1,7 @@
 package Coordinates;
 
 import spaceFigure.Rectangular;
+import spaceFigure.Room;
 
 public class Point {
 	float x,y,z;
@@ -39,6 +40,7 @@ public class Point {
 	public void setZ(float z) {
 		this.z = z;
 	}
+	
 	public float Length(Point a, Point b)
 	{
 		//Khoang cach giua 2 diem
@@ -47,15 +49,16 @@ public class Point {
 		float z = (a.getZ()-b.getZ())*(a.getZ()-b.getZ());
 		return (float) Math.sqrt(x + y + z);
 	}
-	public boolean isInRectangular(Rectangular R) {
-		if (this.x <= R.getXmax() && this.x >= R.getXmin()) {
-			if (this.y <= R.getYmax() && this.y >= R.getYmin()) {
-				if (this.z <= R.getZmax() && this.z >= R.getZmin()) 
-					return true;
-			}
-		}
-		return false;
-	}
+	
+//	public boolean isInRectangular(Rectangular rectangular) {
+//		if (this.x <= rectangular.getXmax() && this.x >= rectangular.getXmin()) {
+//			if (this.y <= rectangular.getYmax() && this.y >= rectangular.getYmin()) {
+//				if (this.z <= rectangular.getZmax() && this.z >= rectangular.getZmin()) 
+//					return true;
+//			}
+//		}
+//		return false;
+//	}
 	
 //	public boolean isInCamera(Camera cam) {
 //		//Check xem co o trong hinh chop tao thanh boi camera khong 	
@@ -96,4 +99,5 @@ public class Point {
 
 //	}
 
+	
 }

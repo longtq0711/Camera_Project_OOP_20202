@@ -6,18 +6,18 @@ public class Line {
 	private float y;
 	private float z;
 	
-	private Vector u; // Vector chi phuong
+	private Vector2D u; // Vector chi phuong
 
 	// Constructor
 	
 	public Line(Point p1, Point p2) {
-		u = new Vector(p1, p2);
+		u = new Vector2D(p1, p2);
 		x = p1.getX();
 		y = p1.getY();
 		z = p1.getZ();
 	}
 	
-	public Line(Point p, Vector v) {
+	public Line(Point p, Vector2D v) {
 		u = v;
 		x = p.getX();
 		y = p.getY();
@@ -49,11 +49,11 @@ public class Line {
 		this.z = z;
 	}
 
-	public Vector getU() {
+	public Vector2D getU() {
 		return u;
 	}
 
-	public void setU(Vector u) {
+	public void setU(Vector2D u) {
 		this.u = u;
 	}
 	//Check xem duong thang co giao voi mat phang khong
