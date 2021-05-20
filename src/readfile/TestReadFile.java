@@ -16,10 +16,10 @@ public class TestReadFile {
 
         StringSplit stringSplit = new StringSplit();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("F:\\input.txt"))) {
-            // địa chỉ tới file
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Tran Quang Long\\Downloads\\input.txt"))) {
+            // 
 
-            // dòng 1 tọa độ 4 diểm ABCD A'B'C'D'
+            // dong 1 toa do 4 diem A, B, C, D
             String lineRoom = br.readLine();
             String[] rs1 = stringSplit.deleteAndSplit(lineRoom);
             for (int i = 0; i < rs1.length; i += 3) {
@@ -27,7 +27,7 @@ public class TestReadFile {
                 room.addPoint(p);
             }
             // room
-            // check lại xem phòng có là hình chữ nhật hay không
+            // check phai hhcn hay khong
             room.printListPoint();
 
             countEntity = Integer.parseInt(br.readLine().trim());

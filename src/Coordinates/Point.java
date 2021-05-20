@@ -1,5 +1,7 @@
 package Coordinates;
 
+import spaceFigure.Rectangular;
+
 public class Point {
 	float x,y,z;
 	
@@ -44,6 +46,15 @@ public class Point {
 		float y = (a.getY()-b.getY())*(a.getY()-b.getY());
 		float z = (a.getZ()-b.getZ())*(a.getZ()-b.getZ());
 		return (float) Math.sqrt(x + y + z);
+	}
+	public boolean isInRectangular(Rectangular R) {
+		if (this.x <= R.getXmax() && this.x >= R.getXmin()) {
+			if (this.y <= R.getYmax() && this.y >= R.getYmin()) {
+				if (this.z <= R.getZmax() && this.z >= R.getZmin()) 
+					return true;
+			}
+		}
+		return false;
 	}
 	
 //	public boolean isInCamera(Camera cam) {

@@ -6,6 +6,53 @@ import Coordinates.Point;
 public class Rectangular {
 	private ArrayList<Point> P1 = new ArrayList<>();
 	private ArrayList<Point> P2 = new ArrayList<>();
+	private float xmax, xmin, ymax, ymin, zmax, zmin;
+	public float getXmax() {
+		return xmax;
+	}
+
+	public void setXmax(float x) {
+		this.xmax = x;
+	}
+
+	public float getYmax() {
+		return ymax;
+	}
+
+	public void setYmax(float y) {
+		this.ymax = y;
+	}
+
+	public float getZmax() {
+		return zmax;
+	}
+
+	public void setZmax(float z) {
+		this.zmax = z;
+	}
+	public float getXmin() {
+		return xmin;
+	}
+
+	public void setXmin(float x) {
+		this.xmin = x;
+	}
+
+	public float getYmin() {
+		return ymin;
+	}
+
+	public void setYmin(float y) {
+		this.ymin = y;
+	}
+
+	public float getZmin() {
+		return zmin;
+	}
+
+	public void setZmin(float z) {
+		this.zmin = z;
+	}
 	public Rectangular() {
 		// TODO Auto-generated constructor stub
 	}

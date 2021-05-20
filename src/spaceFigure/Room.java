@@ -11,8 +11,8 @@ public class Room {
     private Rectangular room;
     private Entity[] entities = new Entity[100];
     private Camera[] cameras = new Camera[100];
-    private Point[] points = new Point[8]; // 8 điểm ABCD A'B'C'D'
-    private Plane[] planes = new Plane[8]; // 8 Mặt phẳng của room
+    private Point[] points = new Point[8]; // 8 diem ABCD A'B'C'D'
+    private Plane[] planes = new Plane[6]; // 6 mat phang
     private int countCamera = 0;
     private int countEntity = 0;
     private int countPoint = 0;

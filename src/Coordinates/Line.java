@@ -57,17 +57,7 @@ public class Line {
 		this.u = u;
 	}
 	//Check xem duong thang co giao voi mat phang khong
-		// d :
-		// x = x0 + at
-		// y = y0 + bt
-		// z = z0 + ct
-		// S :
-		//Ax + By + Cz + D = 0 
-		// d = S
-		//=>A(x0 + at) + B(y0 + bt) + C(Z0 + ct) + D = 0
-		//=> t(Aa + Bb + Cc) = -(Ax0 + By0 + Cz0 + D)
-		//=> t = -(Ax0 + By0 + Cz0 + D) / (Aa + Bb + Cc)
-		
+
 		public Point intersection(Plane p) {
 			float mau = (p.getA()*u.getX() + p.getB()*u.getY() + p.getC()*u.getZ());
 			if(mau == 0) return null;
