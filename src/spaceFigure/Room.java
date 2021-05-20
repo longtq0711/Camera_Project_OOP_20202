@@ -46,11 +46,11 @@ public class Room {
         String rs = "";
 
         for (int i = 0; i < cameras.size(); i++) {
-            rs += " (" + cameras.get(i).getPoint().getX() + ", " + cameras.get(i).getPoint().getY() + ", " + cameras.get(i).getPoint().getZ()
+            rs += "(" + cameras.get(i).getPoint().getX() + ", " + cameras.get(i).getPoint().getY() + ", " + cameras.get(i).getPoint().getZ()
                     + ") " + cameras.get(i).getHighAngle() + " " + cameras.get(i).getWideAngle() + "\n";
         }
 
-        System.out.println("Camera: " + rs);
+        System.out.println("Camera:\n" + rs);
     }
 
     public void printListEntities() {
@@ -58,7 +58,7 @@ public class Room {
         for (int i = 0; i < entities.size(); i++) {
             rs += entities.get(i).printListPoint() + "\n";
         }
-        System.out.printf("Entities: " + rs);
+        System.out.printf("Entities: \n" + rs);
     }
 
 
