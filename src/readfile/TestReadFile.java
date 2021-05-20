@@ -3,6 +3,7 @@ package readfile;
 import Camera.Camera;
 import Coordinates.Point;
 import spaceFigure.Entity;
+import spaceFigure.Rectangular;
 import spaceFigure.Room;
 
 import java.io.BufferedReader;
@@ -16,7 +17,7 @@ public class TestReadFile {
 
         StringSplit stringSplit = new StringSplit();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("F:\\input.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/readfile/input.txt"))) {
             // địa chỉ tới file
 
             // dòng 1 tọa độ 4 diểm ABCD A'B'C'D'
@@ -59,5 +60,6 @@ public class TestReadFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

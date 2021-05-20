@@ -9,51 +9,61 @@ import Coordinates.Point;
 public class Room {
 
     private Rectangular room;
-    private Entity[] entities = new Entity[100];
-    private Camera[] cameras = new Camera[100];
-    private Point[] points = new Point[8]; // 8 điểm ABCD A'B'C'D'
-    private Plane[] planes = new Plane[8]; // 8 Mặt phẳng của room
+    private ArrayList<Entity> entities = new ArrayList<Entity>();
+    private ArrayList<Camera> cameras = new ArrayList<Camera>();
+    private ArrayList<Point> points = new ArrayList<Point>();
+    private ArrayList<Plane> planes = new ArrayList<Plane>();
+
     private int countCamera = 0;
     private int countEntity = 0;
     private int countPoint = 0;
     private int countPlane = 0;
 
     public void addCamera(Camera camera) {
-        cameras[countCamera++] = camera;
+        cameras.add(camera);
+    }
+
+    public ArrayList<Point> getPoints() {
+        return points;
     }
 
     public void addEntity(Entity entity) {
-        entities[countEntity++] = entity;
+        entities.add(entity);
     }
 
     public void addPoint(Point point) {
-        points[countPoint++] = point;
+        points.add(point);
     }
 
     public void printListCamera() {
         String rs = "";
-        for (int i = 0; i < countCamera; i++) {
-            rs += " (" + cameras[i].getPoint().getX() + ", " + cameras[i].getPoint().getY() + ", " + cameras[i].getPoint().getZ()
-                    + ") " + cameras[i].getHighAngle() + " " + cameras[i].getWideAngle() + "\n";
+
+        for (int i = 0; i < cameras.size(); i++) {
+            rs += " (" + cameras.get(i).getPoint().getX() + ", " + cameras.get(i).getPoint().getY() + ", " + cameras.get(i).getPoint().getZ()
+                    + ") " + cameras.get(i).getHighAngle() + " " + cameras.get(i).getWideAngle() + "\n";
         }
-        System.out.println(rs);
+
+        System.out.println("Camreta: " + rs);
     }
 
     public void printListEntities() {
         String rs = "";
-        for (int i = 0; i < countEntity; i++) {
-            rs += entities[i].printListPoint() + "\n";
+        for (int i = 0; i < entities.size(); i++) {
+            rs += entities.get(i).printListPoint() + "\n";
         }
-        System.out.printf(rs);
+        System.out.printf("Entities: " + rs);
     }
 
 
     public String printListPoint() {
         String rs = "";
-        for (int i = 0; i < countPoint; i++) {
-            rs += " (" + points[i].getX() + ", " + points[i].getY() + ", " + points[i].getZ() + ") ";
+        for (int i = 0; i < points.size(); i++) {
+            rs += " (" + points.get(i).getX() + ", " + points.get(i).getY() + ", " + points.get(i).getZ() + ") ";
         }
-        System.out.println(rs);
+        System.out.println("Point" + rs);
         return rs;
     }
+
+
+
 }

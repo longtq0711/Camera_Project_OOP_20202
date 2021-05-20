@@ -1,9 +1,7 @@
 package Coordinates;
 
 public class Plane {
-	public Plane() {
-		// TODO Auto-generated constructor stub
-	}
+
 	private float a;
 	private float b;
 	private float c;
@@ -49,12 +47,14 @@ public class Plane {
 	public void setArea(float area) {
 		this.area = area;
 	}
+
 	public Plane(Point p1, Vector v) {
 		a = v.getX();
 		b = v.getY();
 		c = v.getZ();
 		d = - (a*p1.getX() + b*p1.getY() + c*p1.getZ());
 	}
+
 	public Plane(Point A, Point B, Point C) {
 		// ax + by + cz = d
 		if(isTruePlane(A,B,C)) {
@@ -65,7 +65,7 @@ public class Plane {
 			 b = normal.getY();
 			 c = normal.getZ();
 			 d = -(a*A.getX() + b*A.getY() + c*A.getZ());
-			 area = (float)Math.sqrt( a * a + b * b + c * c);
+			 area = (float)Math.sqrt(a * a + b * b + c * c);
 		}
 	}
 
@@ -80,21 +80,11 @@ public class Plane {
 	}
 
 	public boolean isTruePlane(Point A, Point B, Point C) { // Kiem tra xem 3 diem co nam o mat phang phu hop khong ( may day, mat ben)
-		if( ((A.getX() == B.getX()) && (B.getX() == C.getX())) 
-			|| ((A.getY() == B.getY()) && (B.getY() == C.getY())) 
-			|| ((A.getZ() == B.getZ()) && (B.getZ() == C.getZ()))) {
-			return true;
-		}
-		return false;
+		return ((A.getX() == B.getX()) && (B.getX() == C.getX()))
+				|| ((A.getY() == B.getY()) && (B.getY() == C.getY()))
+				|| ((A.getZ() == B.getZ()) && (B.getZ() == C.getZ()));
 	}
 	
-	public boolean isTruePlane(Point A, Point B, Point C, Point D) { // Kiem tra xem 4 diem co nam o mat phang phu hop khong ( may day, mat ben)
-		if( ((A.getX() == B.getX()) && (B.getX() == C.getX()) && (C.getX() == D.getX())) 
-			|| ((A.getY() == B.getY()) && (B.getY() == C.getY()) && (C.getY() == D.getY())) 
-			|| ((A.getZ() == B.getZ()) && (B.getZ() == C.getZ()) && (C.getZ() == D.getZ()))) {
-			return true;
-		}
-		return false;
-	}
+
 
 }
