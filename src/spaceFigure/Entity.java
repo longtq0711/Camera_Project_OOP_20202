@@ -1,3 +1,4 @@
+package spaceFigure;
 import Coordinates.Point;
 public class Entity {
 	private float x,y,z;

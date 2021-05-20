@@ -49,7 +49,12 @@ public class Plane {
 	public void setArea(float area) {
 		this.area = area;
 	}
-
+	public Plane(Point p1, Vector v) {
+		a = v.getX();
+		b = v.getY();
+		c = v.getZ();
+		d = - (a*p1.getX() + b*p1.getY() + c*p1.getZ());
+	}
 	public Plane(Point A, Point B, Point C) {
 		// ax + by + cz = d
 		if(isTruePlane(A,B,C)) {
