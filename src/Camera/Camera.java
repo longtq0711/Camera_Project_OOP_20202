@@ -9,7 +9,6 @@ public class Camera {
     private int wideAngle; // goc rong
     private Plane around[] = new Plane[4];
     private Plane bottom;
-    private Vector axis;
     public Camera() {
     }
 
@@ -24,18 +23,7 @@ public class Camera {
 	public void setAround(Plane[] around) {
 		this.around = around;
 	}
-	public Plane getBottom() {
-		return bottom;
-	}
-	public Vector getAxis() {
-		return axis;
-	}
-	public void setAxis() {
-		
-	}
-	public void setTop() {
-		bottom = new Plane(point, axis);
-	}
+
     public Point getPoint() {
         return point;
     }

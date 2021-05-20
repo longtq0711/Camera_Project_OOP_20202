@@ -3,6 +3,7 @@ package readfile;
 import Camera.Camera;
 import Coordinates.Point;
 import spaceFigure.Entity;
+import spaceFigure.Rectangular;
 import spaceFigure.Room;
 
 import java.io.BufferedReader;
@@ -16,9 +17,9 @@ public class TestReadFile {
 
         StringSplit stringSplit = new StringSplit();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Tran Quang Long\\Downloads\\input.txt"))) {
-            // 
-
+        try (BufferedReader br = new BufferedReader(new FileReader("src/readfile/input.txt"))) {
+            // dia chi toi file
+        	
             // dong 1 toa do 4 diem A, B, C, D
             String lineRoom = br.readLine();
             String[] rs1 = stringSplit.deleteAndSplit(lineRoom);
@@ -59,5 +60,6 @@ public class TestReadFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

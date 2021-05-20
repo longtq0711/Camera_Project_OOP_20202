@@ -60,13 +60,13 @@ public class Rectangular {
 		//check xem co phai hhcn khong
 		int k = 0;
 		for(Point point: points) {
-			if (this.P1.get(k) == null) this.P1.add(point);
+			if (this.P1.isEmpty()) this.P1.add(point);
 			else {
-				if (point.getZ() == this.P1.get(k).getZ()) this.P1.add(point);
+				if (point.getZ() == this.P1.get(0).getZ()) this.P1.add(point);
 				else {
-					if (this.P2.get(k) == null) this.P2.add(point);
+					if (this.P2.isEmpty()) this.P2.add(point);
 					else {
-						if(point.getZ() == this.P2.get(k).getZ()) this.P2.add(point);
+						if(point.getZ() == this.P2.get(0).getZ()) this.P2.add(point);
 						else return false;
 					}
 				}
