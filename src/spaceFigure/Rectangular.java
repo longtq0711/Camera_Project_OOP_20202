@@ -49,9 +49,18 @@ public class Rectangular {
 			this.yMin = Float.min(yMin, point.getY());
 			this.zMin = Float.min(zMin, point.getZ());
 		}
+		constructPlane();
+	}
+	
+	public Plane getPlane(int index) {
+		return planes.get(index);
+	}
+	
+	public List<Plane> getPlanes(){
+		return planes;
 	}
 
-	public void addPlane() {
+	public void constructPlane() {
 		ArrayList<Point> plane1 = new ArrayList<>();// plane 1 + 2 : mat ben
 		ArrayList<Point> plane2 = new ArrayList<>();
 		ArrayList<Point> plane3 = new ArrayList<>();// plane 3 + 4 : mat ben
@@ -60,11 +69,11 @@ public class Rectangular {
 		ArrayList<Point> plane6 = new ArrayList<>();
 		for (Point point : points) {
 			if (point.getX() == xMin) plane1.add(point);
-			else if (point.getX() == xMax) plane2.add(point);
-			else if (point.getY() == yMin) plane3.add(point);
-			else if (point.getY() == yMax) plane4.add(point);
-			else if (point.getZ() == zMax) plane5.add(point); // mat tren
-			else if (point.getZ() == zMin) plane6.add(point); // mat day
+			if (point.getX() == xMax) plane2.add(point);
+			if (point.getY() == yMin) plane3.add(point);
+			if (point.getY() == yMax) plane4.add(point);
+			if (point.getZ() == zMax) plane5.add(point); // mat tren
+			if (point.getZ() == zMin) plane6.add(point); // mat day
 		}
 		planes.add(new Plane(plane1.get(0),plane1.get(1), plane1.get(2)));
 		planes.add(new Plane(plane2.get(0),plane2.get(1), plane2.get(2)));

@@ -1,6 +1,8 @@
 package spaceFigure;
 
 import Camera.Camera;
+import Coordinates.Line;
+import Coordinates.Plane;
 import Coordinates.Point;
 import exception.CannotPutEntityToRoomException;
 
@@ -11,12 +13,13 @@ public class Room extends Rectangular {
 
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Camera> cameras = new ArrayList<>();
-    
+    private ArrayList<Plane> planes = new ArrayList<>();
 
 	public ArrayList<Camera> getCameras() {
 		return cameras;
 	}
-	
+
+
 	public Room(List<Point> points) {
     	super(points);
     }
@@ -24,7 +27,6 @@ public class Room extends Rectangular {
     public void addCamera(Camera camera) {
         cameras.add(camera);
     }
-
 
 
     public void addEntity(Entity entity) {
@@ -99,19 +101,19 @@ public class Room extends Rectangular {
 //	public boolean canBeSeen(Point p) {
 //		for(Camera camera: cameras) {
 //			int count = 0;
-//			if (camera.isInCameraView(p, camera, null)) {
+//			if (camera.isInCameraView(p, camera, )) {
 //				Line line = new Line(p, camera.getPosition());
 //				for (Entity entity: entities) {
 //					if (entity.isContain(p)) return false;
 //					count = 0;
-//					//Chay 1 vong for xet 6 mat cua vat the
-//					if(line.intersection(entity.plane) != null) count++;
-//					//ket thuc vong for
+//					for (Plane plane: entity.addPlane()) {
+//						if(line.intersection(entity.plane) != null) count++;
+//					}
 //					if(count >= 2) return false;
 //					//ket thuc vong for
 //				}
 //			}
 //		}
 //		return true;
-	}
+}
 
