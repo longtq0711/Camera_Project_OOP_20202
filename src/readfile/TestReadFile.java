@@ -76,6 +76,13 @@ public class TestReadFile {
                 room.addCamera(c);
             }
             room.printListCamera();
+            for(int i = 0; i < countCamera; i++) {
+            	if(room.getCameras().get(i).checkCameraInRoom(room)) {
+            		System.out.println("Camera " + (i+1) + " in Room");
+            	} else {
+            		System.out.println("Camera " + (i+1) + " not in Room");
+            	}
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

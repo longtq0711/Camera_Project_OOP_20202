@@ -13,7 +13,12 @@ public class Room extends Rectangular {
     private ArrayList<Entity> entities = new ArrayList<Entity>();
     private ArrayList<Camera> cameras = new ArrayList<Camera>();
     
-    public Room(List<Point> points) {
+    
+	public ArrayList<Camera> getCameras() {
+		return cameras;
+	}
+	
+	public Room(List<Point> points) {
     	super(points);
     }
     
@@ -37,7 +42,7 @@ public class Room extends Rectangular {
         String rs = "";
 
         for (int i = 0; i < cameras.size(); i++) {
-            rs += "(" + cameras.get(i).getPoint().getX() + ", " + cameras.get(i).getPoint().getY() + ", " + cameras.get(i).getPoint().getZ()
+            rs += "(" + cameras.get(i).getPosition().getX() + ", " + cameras.get(i).getPosition().getY() + ", " + cameras.get(i).getPosition().getZ()
                     + ") " + cameras.get(i).getHighAngle() + " " + cameras.get(i).getWideAngle() + "\n";
         }
 

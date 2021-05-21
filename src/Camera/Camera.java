@@ -2,9 +2,11 @@ package Camera;
 import Coordinates.Plane;
 import Coordinates.Point;
 import Coordinates.Vector2D;
+import spaceFigure.Rectangular;
+import spaceFigure.Room;
 
 public class Camera {
-	private Point point; // toa do camera trong oxyz
+	private Point position; // toa do camera trong oxyz
     private int highAngle; // goc cao
     private int wideAngle; // goc rong
     private Plane around[] = new Plane[4];
@@ -13,7 +15,7 @@ public class Camera {
     }
 
     public Camera(Point point, int highAngle, int wideAngle) {
-        this.point = point;
+        this.position = point;
         this.highAngle = highAngle;
         this.wideAngle = wideAngle;
     }
@@ -24,12 +26,12 @@ public class Camera {
 		this.around = around;
 	}
 
-    public Point getPoint() {
-        return point;
+    public Point getPosition() {
+        return position;
     }
 
-    public void setPoint(Point point) {
-        this.point = point;
+    public void setPosition(Point point) {
+        this.position = point;
     }
 
     public int getHighAngle() {
@@ -48,6 +50,18 @@ public class Camera {
         this.wideAngle = wideAngle;
     }
 	
+    public boolean checkCameraInRoom(Room room) {
+    	if(room.isContain(position)) {
+    		if(position.getZ() == room.getZmax() || position.getX() == room.getXmax() || position.getX() == 0
+    				|| position.getY() == room.getYmax() || position.getY() == 0) {
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	}
+    	return false;
+    }
+    
 //	public boolean canBeSeen(Point p) {
 //		//Chay vong for xet cac camera
 //		if (p.isInvisible(camera[i])) return true;
