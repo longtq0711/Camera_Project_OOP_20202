@@ -1,18 +1,19 @@
 package spaceFigure;
-import java.util.ArrayList;
-import java.util.List;
-
 import Coordinates.Plane;
 import Coordinates.Point;
 import exception.NotReactangularException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Rectangular {
 
-	protected ArrayList<Point> points = new ArrayList<Point>();
-	private ArrayList<Plane> planes = new ArrayList<Plane>();
+	protected ArrayList<Point> points = new ArrayList<>();
+	private ArrayList<Plane> planes = new ArrayList<>();
 	
 	private float xMax = Float.MIN_VALUE, yMax = Float.MIN_VALUE, zMax = Float.MIN_VALUE;
 	private float xMin = Float.MAX_VALUE, yMin = Float.MAX_VALUE, zMin = Float.MAX_VALUE;
+
 	public float getXmax() {
 		return this.xMax;
 	}
@@ -49,6 +50,29 @@ public class Rectangular {
 			this.zMin = Float.min(zMin, point.getZ());
 		}
 	}
+
+	public void addPlane() {
+		ArrayList<Point> plane1 = new ArrayList<>();// plane 1 + 2 : mat ben
+		ArrayList<Point> plane2 = new ArrayList<>();
+		ArrayList<Point> plane3 = new ArrayList<>();// plane 3 + 4 : mat ben
+		ArrayList<Point> plane4 = new ArrayList<>();
+		ArrayList<Point> plane5 = new ArrayList<>();// plane 5 + 6 : mat tren + mat day
+		ArrayList<Point> plane6 = new ArrayList<>();
+		for (Point point : points) {
+			if (point.getX() == xMin) plane1.add(point);
+			else if (point.getX() == xMax) plane2.add(point);
+			else if (point.getY() == yMin) plane3.add(point);
+			else if (point.getY() == yMax) plane4.add(point);
+			else if (point.getZ() == zMax) plane5.add(point); // mat tren
+			else if (point.getZ() == zMin) plane6.add(point); // mat day
+		}
+		planes.add(new Plane(plane1.get(0),plane1.get(1), plane1.get(2)));
+		planes.add(new Plane(plane2.get(0),plane2.get(1), plane2.get(2)));
+		planes.add(new Plane(plane3.get(0),plane3.get(1), plane3.get(2)));
+		planes.add(new Plane(plane4.get(0),plane4.get(1), plane4.get(2)));
+		planes.add(new Plane(plane5.get(0),plane5.get(1), plane5.get(2)));
+		planes.add(new Plane(plane6.get(0),plane6.get(1), plane6.get(2))); // mat day se o vi tri cuoi cung trong array list
+	}
 	
 	public boolean isRectangular(List<Point> points){
 		ArrayList<Point> P1 = new ArrayList<>();
@@ -68,26 +92,23 @@ public class Rectangular {
 				}
 			}
 		}
-		
-		for(int i=0; i<P1.size(); i++) {
-			for(int j=0; j<P2.size(); j++) {
-				if((P1.get(i).getX() == P2.get(j).getX()) && (P1.get(i).getY() == P2.get(j).getY())) {
+
+		for (Point value : P1) {
+			for (Point point : P2) {
+				if ((value.getX() == point.getX()) && (value.getY() == point.getY())) {
 					k++;
-					continue;
 				}
-					
+
 			}
 		}
-		if (k==4) return true;
-		return false;
+		return k == 4;
 	}
 	
 	public boolean isContain(Point point) {
 		// TODO check
 		if (point.getX() <= this.xMax && point.getX() >= this.xMin) {
 			if (point.getY() <= this.yMax && point.getY() >= this.yMin) {
-				if (point.getZ() <= this.zMax && point.getZ() >= this.zMin) 
-					return true;
+				return point.getZ() <= this.zMax && point.getZ() >= this.zMin;
 			}
 		}
 		return false;

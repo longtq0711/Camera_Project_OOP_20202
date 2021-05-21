@@ -1,20 +1,18 @@
 package spaceFigure;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import Camera.Camera;
-import Coordinates.Line;
-import Coordinates.Plane;
 import Coordinates.Point;
 import exception.CannotPutEntityToRoomException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Room extends Rectangular {
 
-    private ArrayList<Entity> entities = new ArrayList<Entity>();
-    private ArrayList<Camera> cameras = new ArrayList<Camera>();
+    private ArrayList<Entity> entities = new ArrayList<>();
+    private ArrayList<Camera> cameras = new ArrayList<>();
     
-    
+
 	public ArrayList<Camera> getCameras() {
 		return cameras;
 	}
@@ -26,6 +24,8 @@ public class Room extends Rectangular {
     public void addCamera(Camera camera) {
         cameras.add(camera);
     }
+
+
 
     public void addEntity(Entity entity) {
     	boolean check = false;
@@ -40,32 +40,30 @@ public class Room extends Rectangular {
     }
 
     public void printListCamera() {
-        String rs = "";
+        StringBuilder rs = new StringBuilder();
 
         for (int i = 0; i < cameras.size(); i++) {
-            rs += "(" + cameras.get(i).getPosition().getX() + ", " + cameras.get(i).getPosition().getY() + ", " + cameras.get(i).getPosition().getZ()
-                    + ") " + cameras.get(i).getHighAngle() + " " + cameras.get(i).getWideAngle() + "\n";
+            rs.append("(").append(cameras.get(i).getPosition().getX()).append(", ").append(cameras.get(i).getPosition().getY()).append(", ").append(cameras.get(i).getPosition().getZ()).append(") ").append(cameras.get(i).getHighAngle()).append(" ").append(cameras.get(i).getWideAngle()).append("\n");
         }
 
         System.out.println("Camera:\n" + rs);
     }
 
     public void printListEntities() {
-        String rs = "";
-        for (int i = 0; i < entities.size(); i++) {
-            rs += entities.get(i).printListPoint() + "\n";
-        }
-        System.out.printf("Entities: \n" + rs);
+        StringBuilder rs = new StringBuilder();
+		for (Entity entity : entities) {
+			rs.append(entity.printListPoint()).append("\n");
+		}
+        System.out.print("Entities: \n" + rs);
     }
 
-    public String printListPoint() {
-        String rs = "";
-        for (int i = 0; i < points.size(); i++) {
-            rs += " (" + points.get(i).getX() + ", " + points.get(i).getY() + ", " + points.get(i).getZ() + ") ";
-        }
+    public void printListPoint() {
+        StringBuilder rs = new StringBuilder();
+		for (Point point : points) {
+			rs.append(" (").append(point.getX()).append(", ").append(point.getY()).append(", ").append(point.getZ()).append(") ");
+		}
         System.out.println("Point" + rs);
-        return rs;
-    }
+	}
     
 	public boolean isInRoom(Entity entity) {
 		//check xem co nam trong phong khong
@@ -79,8 +77,7 @@ public class Room extends Rectangular {
 			for (int i = 0; i < entity.points.size(); i++) {
 				if (entity.points.get(i).getZ() == 0) count++; 
 				}
-			if (count == 4) return true;
-			else return false;
+			return count == 4;
 		}
 		return false;
 	}
@@ -90,8 +87,7 @@ public class Room extends Rectangular {
 		Point C1 = new Point(entity2.getXmin(), entity2.getYmax(), entity2.getZmin());
 		Point D1 = new Point(entity2.getXmin(), entity2.getYmin(), entity2.getZmin());
 		if(entity1.getZmax() == entity2.getZmin()) {
-			if(entity1.isContain(A1)||entity1.isContain(B1)||entity1.isContain(C1)||entity1.isContain(D1))
-				return true;
+			return entity1.isContain(A1) || entity1.isContain(B1) || entity1.isContain(C1) || entity1.isContain(D1);
 		}
 		return false;
 	}
@@ -118,4 +114,4 @@ public class Room extends Rectangular {
 //		}
 //		return true;
 	}
-}
+

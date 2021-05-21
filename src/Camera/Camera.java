@@ -2,14 +2,14 @@ package Camera;
 import Coordinates.Plane;
 import Coordinates.Point;
 import Coordinates.Vector2D;
-import spaceFigure.Rectangular;
 import spaceFigure.Room;
+
 
 public class Camera {
 	private Point position; // toa do camera trong oxyz
     private int highAngle; // goc cao
     private int wideAngle; // goc rong
-    private Plane around[] = new Plane[4];
+    private Plane[] around = new Plane[4];
     private Plane bottom;
     public Camera() {
     }
@@ -52,17 +52,19 @@ public class Camera {
 	
     public boolean checkCameraInRoom(Room room) {
     	if(room.isContain(position)) {
-    		if(position.getZ() == room.getZmax() || position.getX() == room.getXmax() || position.getX() == 0
-    				|| position.getY() == room.getYmax() || position.getY() == 0) {
-    			return true;
-    		} else {
-    			return false;
-    		}
+            return position.getZ() == room.getZmax() || position.getX() == room.getXmax() || position.getX() == 0
+                    || position.getY() == room.getYmax() || position.getY() == 0;
     	}
     	return false;
     }
-    public boolean isInCameraView(Point p, Camera camera, Plane plane){
-    	//Check xem 1 diem co nam trong vung nhin thay cua camera hay khong
+    public boolean isInCameraView(Point p, Camera camera, Plane plane) {
+        Vector2D v = new Vector2D(position, p);
+        double numerator = Math.abs(v.getX()* plane.getA() + v.getY()* plane.getB() + v.getZ() * plane.getC()); // tu so
+        double denominator = Math.sqrt(v.getX()*v.getX() + v.getY()*v.getY()
+                + v.getZ()* v.getZ()) * Math.sqrt(plane.getA() * plane.getA() + plane.getB() * plane.getB() + plane.getC() * plane.getC());
+        int angle = (int)Math.toDegrees(Math.asin(numerator/denominator))+ 1; // goc giua duong thang va mat phang chua camera
+        return angle > (90 - wideAngle) / 2;
     }
+
 
 }
