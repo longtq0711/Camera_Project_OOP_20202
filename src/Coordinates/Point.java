@@ -63,17 +63,7 @@ public class Point {
 //	public boolean isInCamera(Camera cam) {
 //		//Check xem co o trong hinh chop tao thanh boi camera khong 	
 //	}
-//	public boolean isInRoom(Room room){
-//		//Check xem co o trong phong khong
-//	}
-//	public float callDistance(Entity entity) {
-//		//Khoang cach den Entity
-//	}
-//
-//	public boolean isInEntity(Entity entity) {
-//		//Kiem tra xem co co trong Entity khong
-//	}
-	
+
 	//Check xem co the nhin thay duoc khong:
 	// 1. Nam trong phong va trong vung hinh chop tao boi camera
 	// 2. Nam ngoai vat the va duong thang noi diem dat camera den diem can xet khong

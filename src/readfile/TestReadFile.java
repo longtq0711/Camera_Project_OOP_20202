@@ -35,7 +35,7 @@ public class TestReadFile {
             try {
             	room = new Room(roomPoints);
             	room.printListPoint();
-            } catch (IllegalArgumentException e) {
+            } catch (NotReactangularException e) {
             	System.out.println("This room is not rectangular");
             	return;
             }
@@ -61,21 +61,8 @@ public class TestReadFile {
                 	System.out.println("Fail to add entity");
                 	return;
                 }
-//                if (entity.isInRoom(room)) {
-//                	if(entity.isOnFloor(room)) room.addEntity(entity);
-//                	else {
-////                		if(entity.isOnAnother()) room.addEntity(entity);
-//                		System.out.println("Fail to add entity into room");
-//                	}
-//                }
-//                else {
-//                	System.out.println(room.getXmax());
-//                	System.out.println("Fail to add entity into room");
-//                }
-//            }
-            room.printListEntities();
             }
-            
+            room.printListEntities();
 
             countCamera = Integer.parseInt(br.readLine().trim());
             for (int i = 0; i < countCamera; i++) {

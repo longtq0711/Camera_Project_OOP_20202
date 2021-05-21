@@ -20,19 +20,6 @@ public class Entity extends Rectangular {
  
 	}
 
-	public boolean isPutable(Entity entity) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-//	public boolean isValid(){
-//		//check xem có hợp lệ không
-//	}
 
-//	public boolean isOnEntity(float x,float y,float z) {
-//		//check xem có nằm trên vật khác không
-//	}
-	
-	
 
 }

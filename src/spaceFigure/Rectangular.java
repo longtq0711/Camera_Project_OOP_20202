@@ -11,42 +11,42 @@ public class Rectangular {
 	protected ArrayList<Point> points = new ArrayList<Point>();
 	private ArrayList<Plane> planes = new ArrayList<Plane>();
 	
-	private float xmax = Float.MIN_VALUE, ymax = Float.MIN_VALUE, zmax = Float.MIN_VALUE;
-	private float xmin = Float.MAX_VALUE, ymin = Float.MAX_VALUE, zmin = Float.MAX_VALUE;
+	private float xMax = Float.MIN_VALUE, yMax = Float.MIN_VALUE, zMax = Float.MIN_VALUE;
+	private float xMin = Float.MAX_VALUE, yMin = Float.MAX_VALUE, zMin = Float.MAX_VALUE;
 	public float getXmax() {
-		return xmax;
+		return this.xMax;
 	}
 
 	public float getYmax() {
-		return this.ymax;
+		return this.yMax;
 	}
 
 	public float getZmax() {
-		return this.zmax;
+		return this.zMax;
 	}
 
 	public float getXmin() {
-		return this.xmin;
+		return this.xMin;
 	}
 
 	public float getYmin() {
-		return this.ymin;
+		return this.yMin;
 	}
 
 	public float getZmin() {
-		return this.zmin;
+		return this.zMin;
 	}
 	public Rectangular(List<Point> points) {
 		super();
 		if(!isRectangular(points)) throw new NotReactangularException();
 		for(Point point : points) {
 			this.points.add(point);
-			this.xmax = Float.max(xmax, point.getX());
-			this.ymax = Float.max(ymax, point.getY());
-			this.zmax = Float.max(zmax, point.getZ());
-			this.xmin = Float.min(xmin, point.getX());
-			this.ymin = Float.min(ymin, point.getY());
-			this.zmin = Float.min(zmin, point.getZ());
+			this.xMax = Float.max(xMax, point.getX());
+			this.yMax = Float.max(yMax, point.getY());
+			this.zMax = Float.max(zMax, point.getZ());
+			this.xMin = Float.min(xMin, point.getX());
+			this.yMin = Float.min(yMin, point.getY());
+			this.zMin = Float.min(zMin, point.getZ());
 		}
 	}
 	
@@ -82,24 +82,11 @@ public class Rectangular {
 		return false;
 	}
 	
-	public float Volume(ArrayList<Point> points) {
-		//The tich hinh hop
-		float h = points.get(0).getZ();
-		float a = points.get(0).getX();
-		float b = points.get(0).getZ();
-		for(Point point: points) {
-			if (point.getX()!= h) h = Math.abs(h - point.getZ()); 
-			if (point.getX()!= a) a = Math.abs(a - point.getX()); 
-			if (point.getX()!= b) b = Math.abs(b - point.getY()); 
-		}
-		return a*b*h;
-	}
-	
 	public boolean isContain(Point point) {
 		// TODO check
-		if (point.getX() <= this.xmax && point.getX() >= this.xmin) {
-			if (point.getY() <= this.ymax && point.getY() >= this.ymin) {
-				if (point.getZ() <= this.zmax && point.getZ() >= this.zmin) 
+		if (point.getX() <= this.xMax && point.getX() >= this.xMin) {
+			if (point.getY() <= this.yMax && point.getY() >= this.yMin) {
+				if (point.getZ() <= this.zMax && point.getZ() >= this.zMin) 
 					return true;
 			}
 		}

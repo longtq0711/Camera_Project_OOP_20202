@@ -56,7 +56,7 @@ public class Plane {
 	}
 
 	public Plane(Point A, Point B, Point C) {
-		// ax + by + cz = d
+		// ax + by + cz + d = 0
 		if(isTruePlane(A,B,C)) {
 			Vector2D AB = new Vector2D(A, B);
 			Vector2D AC = new Vector2D(A, C);
@@ -70,7 +70,7 @@ public class Plane {
 	}
 
 	public boolean isInThePlane(Point A) { // Kiem tra diem thuoc mat phang
-		return a * A.getX() + b * A.getY() + c * A.getZ() == d;
+		return (a * A.getX() + b * A.getY() + c * A.getZ()) == -d;
 	}
 
 	public float distance(Point A) { // Khoang cach tu diem A den mat phang
