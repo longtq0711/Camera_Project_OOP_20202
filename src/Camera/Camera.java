@@ -61,10 +61,8 @@ public class Camera {
     	}
     	return false;
     }
-    
-//	public boolean canBeSeen(Point p) {
-//		//Chay vong for xet cac camera
-//		if (p.isInvisible(camera[i])) return true;
-//		return false;
-//	}
+    public boolean isInCameraView(Point p, Camera camera, Plane plane){
+    	//Check xem 1 diem co nam trong vung nhin thay cua camera hay khong
+    }
+
 }

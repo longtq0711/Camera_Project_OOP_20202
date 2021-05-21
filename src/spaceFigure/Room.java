@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Camera.Camera;
+import Coordinates.Line;
 import Coordinates.Plane;
 import Coordinates.Point;
 import exception.CannotPutEntityToRoomException;
@@ -93,5 +94,28 @@ public class Room extends Rectangular {
 				return true;
 		}
 		return false;
+	}
+	//Check xem co the nhin thay duoc khong:
+		// 1. Nam trong phong va trong vung hinh chop tao boi camera
+		// 2. Nam ngoai vat the va duong thang noi diem dat camera den diem can xet khong
+		// giao voi 2 mat phang tro len cua vat the
+	
+//	public boolean canBeSeen(Point p) {
+//		for(Camera camera: cameras) {
+//			int count = 0;
+//			if (camera.isInCameraView(p, camera, null)) {
+//				Line line = new Line(p, camera.getPosition());
+//				for (Entity entity: entities) {
+//					if (entity.isContain(p)) return false;
+//					count = 0;
+//					//Chay 1 vong for xet 6 mat cua vat the
+//					if(line.intersection(entity.plane) != null) count++;
+//					//ket thuc vong for
+//					if(count >= 2) return false;
+//					//ket thuc vong for
+//				}
+//			}
+//		}
+//		return true;
 	}
 }
