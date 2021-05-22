@@ -57,7 +57,7 @@ public class Camera {
     	}
     	return false;
     }
-    public boolean isInCameraView(Point p, Camera camera, Plane plane) {
+    public boolean isInCameraView(Point p, Plane plane) {
         Vector2D v = new Vector2D(position, p);
         double numerator = Math.abs(v.getX()* plane.getA() + v.getY()* plane.getB() + v.getZ() * plane.getC()); // tu so
         double denominator = Math.sqrt(v.getX()*v.getX() + v.getY()*v.getY()

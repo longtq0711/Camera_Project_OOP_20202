@@ -98,22 +98,26 @@ public class Room extends Rectangular {
 		// 2. Nam ngoai vat the va duong thang noi diem dat camera den diem can xet khong
 		// giao voi 2 mat phang tro len cua vat the
 	
-//	public boolean canBeSeen(Point p) {
-//		for(Camera camera: cameras) {
-//			int count = 0;
-//			if (camera.isInCameraView(p, camera, )) {
-//				Line line = new Line(p, camera.getPosition());
-//				for (Entity entity: entities) {
-//					if (entity.isContain(p)) return false;
-//					count = 0;
-//					for (Plane plane: entity.addPlane()) {
-//						if(line.intersection(entity.plane) != null) count++;
-//					}
-//					if(count >= 2) return false;
-//					//ket thuc vong for
-//				}
-//			}
-//		}
-//		return true;
+	public boolean canBeSeen(Point p, Room r) {
+		List<Plane> roomPlanes = r.getPlanes();
+		for(Camera camera: cameras) {
+			int count = 0;
+			for (Plane roomPlane: roomPlanes) {
+			if (camera.isInCameraView(p, roomPlane)) {
+				Line line = new Line(p, camera.getPosition());
+				for (Entity entity: entities) {
+					if (entity.isContain(p)) return false;
+					count = 0;
+					List<Plane> entityPlanes = entity.getPlanes();
+					for (Plane entityPlane: entityPlanes) {
+						if(line.intersection(entityPlane)!= null) count++;
+						}
+					if(count >= 2) return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
 }
 
