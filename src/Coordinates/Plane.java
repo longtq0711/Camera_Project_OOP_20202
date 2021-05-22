@@ -57,7 +57,6 @@ public class Plane {
 
 	public Plane(Point A, Point B, Point C) {
 		// ax + by + cz + d = 0
-		if(isTruePlane(A,B,C)) {
 			Vector2D AB = new Vector2D(A, B);
 			Vector2D AC = new Vector2D(A, C);
 			Vector2D normal = new Vector2D(AB, AC);// vector phap tuyen
@@ -66,7 +65,6 @@ public class Plane {
 			 c = normal.getZ();
 			 d = -(a*A.getX() + b*A.getY() + c*A.getZ());
 			 area = (float)Math.sqrt(a * a + b * b + c * c);
-		}
 	}
 
 	public boolean isInThePlane(Point A) { // Kiem tra diem thuoc mat phang

@@ -38,7 +38,7 @@ public class TestReadFile {
             	room.printListPoint();
             	List<Plane> planes = room.getPlanes();
             	for(Plane plane : planes) {
-            		System.out.println(plane.getA() + " " + plane.getB());
+            		System.out.println(plane.getA() + " " + plane.getB() + " " + plane.getC() + " " + plane.getD());
             	}
             } catch (NotReactangularException e) {
             	System.out.println("This room is not rectangular");
