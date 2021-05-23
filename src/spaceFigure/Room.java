@@ -14,11 +14,10 @@ public class Room extends Rectangular {
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Camera> cameras = new ArrayList<>();
     private ArrayList<Plane> planes = new ArrayList<>();
-
+    private int count = 0;
 	public ArrayList<Camera> getCameras() {
 		return cameras;
 	}
-
 
 	public Room(List<Point> points) {
     	super(points);
@@ -34,11 +33,12 @@ public class Room extends Rectangular {
     	// check if we can add the entity to this room
     	for(Entity currentEntity : entities) {
     		if(isPutable(currentEntity, entity)) check = true;
-    	}
+    	}	
+    	if (count < 1) if(isOnFloor(entity)) check = true;
     	
-    	if(isOnFloor(entity)) check = true;
     	if(!check) throw new CannotPutEntityToRoomException();
         entities.add(entity);
+        count++;
     }
 
     public void printListCamera() {
@@ -88,8 +88,13 @@ public class Room extends Rectangular {
 		Point B1 = new Point(entity2.getXmax(), entity2.getYmin(), entity2.getZmin());
 		Point C1 = new Point(entity2.getXmin(), entity2.getYmax(), entity2.getZmin());
 		Point D1 = new Point(entity2.getXmin(), entity2.getYmin(), entity2.getZmin());
-		if(entity1.getZmax() == entity2.getZmin()) {
-			return entity1.isContain(A1) || entity1.isContain(B1) || entity1.isContain(C1) || entity1.isContain(D1);
+		if(this.isInRoom(entity2)) {
+			for (int i = 0; i < entity2.points.size(); i++) {
+					if (entity1.isContain(points.get(i))) return false; 
+			}
+			if (entity1.getZmax() == entity2.getZmin()) {
+				if(entity1.isContain(A1) || entity1.isContain(B1) || entity1.isContain(C1) || entity1.isContain(D1)) return true;
+			}
 		}
 		return false;
 	}

@@ -117,7 +117,8 @@ public class Rectangular {
 		// TODO check
 		if (point.getX() <= this.xMax && point.getX() >= this.xMin) {
 			if (point.getY() <= this.yMax && point.getY() >= this.yMin) {
-				return point.getZ() <= this.zMax && point.getZ() >= this.zMin;
+				if (point.getZ() <= this.zMax && point.getZ() >= this.zMin) 
+					return true;
 			}
 		}
 		return false;

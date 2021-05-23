@@ -58,7 +58,6 @@ public class TestReadFile {
 				try {
                     Entity entity = new Entity(entityPoints);
                     room.addEntity(entity);
-                 
 
                 } catch (NotReactangularException e) {
                 	System.out.println("One of entities is not rectangular");
