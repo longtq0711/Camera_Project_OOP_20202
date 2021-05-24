@@ -1,7 +1,5 @@
 
 import Camera.Camera;
-import Coordinates.Line;
-import Coordinates.Plane;
 import Coordinates.Point;
 import readfile.CreateRoom;
 import spaceFigure.Room;
