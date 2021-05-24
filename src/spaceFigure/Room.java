@@ -108,7 +108,6 @@ public class Room extends Rectangular {
 	public boolean canBeSeen(Point p){
 		List<Plane> roomPlanes = getPlanes();
 		for(Camera camera: cameras) {
-			int count = 0;
 			for (Plane roomPlane: roomPlanes) {
 			if (camera.isInCameraView(p, roomPlane)) {
 				Line line = new Line(p, camera.getPosition());
@@ -117,9 +116,9 @@ public class Room extends Rectangular {
 					count = 0;
 					List<Plane> entityPlanes = entity.getPlanes();
 					for (Plane entityPlane: entityPlanes) {
-						if(line.intersection(entityPlane)!= null) count++;
+						Point i = line.intersection(entityPlane);
+						if(i.isBetween(p, camera.getPosition())) return false;
 						}
-					if(count >= 2) return false;
 					}
 				}
 			}

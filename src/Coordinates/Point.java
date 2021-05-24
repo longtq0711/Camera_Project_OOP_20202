@@ -41,14 +41,33 @@ public class Point {
 		this.z = z;
 	}
 	
-	public float Length(Point a, Point b)
-	{
-		//Khoang cach giua 2 diem
-		float x = (a.getX()-b.getX())*(a.getX()-b.getX());
-		float y = (a.getY()-b.getY())*(a.getY()-b.getY());
-		float z = (a.getZ()-b.getZ())*(a.getZ()-b.getZ());
-		return (float) Math.sqrt(x + y + z);
+	public boolean check(Point p) {
+		//Check 2 diem trung nhau
+		if(x != p.x)
+			return false;
+		if(y != p.y)
+			return false;
+		if(z != p.z)
+			return false;
+		return true;
 	}
+	
+	public boolean isBetween(Point p1, Point p2) { 
+		// Xac dinh diem p co nam giua 2 diem p1 va p2 hay ko
+		// Chi ap dung cho 3 diem thang hang
+		// Neu (p1 -p)(p2 - p) < 0 -> diem p nam giua p1 va p2
+		if(check(p1) || check(p2))
+			return false;
+		
+		if((p1.x - this.x)*(p2.x - this.x) > 0)
+			return false;
+		if((p1.y - this.y)*(p2.y - this.y) > 0)
+			return false;
+		if((p1.z - this.z)*(p2.z - this.z) > 0)
+			return false;
+		return true;
+	}
+	
 	public String printPoint(){
 		String rs = "";
 		rs = "(" + this.x + ", " + this.y + ", " +this.z + ")";
