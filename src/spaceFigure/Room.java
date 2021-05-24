@@ -13,8 +13,10 @@ public class Room extends Rectangular {
 
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Camera> cameras = new ArrayList<>();
-    private ArrayList<Plane> planes = new ArrayList<>();
     private int count = 0;
+
+
+
 	public ArrayList<Camera> getCameras() {
 		return cameras;
 	}
@@ -103,8 +105,8 @@ public class Room extends Rectangular {
 		// 2. Nam ngoai vat the va duong thang noi diem dat camera den diem can xet khong
 		// giao voi 2 mat phang tro len cua vat the
 	
-	public boolean canBeSeen(Point p, Room r) {
-		List<Plane> roomPlanes = r.getPlanes();
+	public boolean canBeSeen(Point p){
+		List<Plane> roomPlanes = getPlanes();
 		for(Camera camera: cameras) {
 			int count = 0;
 			for (Plane roomPlane: roomPlanes) {

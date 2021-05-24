@@ -7,14 +7,14 @@ import spaceFigure.Room;
 
 public class Camera {
 	private Point position; // toa do camera trong oxyz
-    private int highAngle; // goc cao
-    private int wideAngle; // goc rong
+    private float highAngle; // goc cao
+    private float wideAngle; // goc rong
     private Plane[] around = new Plane[4];
     private Plane bottom;
     public Camera() {
     }
 
-    public Camera(Point point, int highAngle, int wideAngle) {
+    public Camera(Point point, float highAngle, float wideAngle) {
         this.position = point;
         this.highAngle = highAngle;
         this.wideAngle = wideAngle;
@@ -34,7 +34,7 @@ public class Camera {
         this.position = point;
     }
 
-    public int getHighAngle() {
+    public float getHighAngle() {
         return highAngle;
     }
 
@@ -42,7 +42,7 @@ public class Camera {
         this.highAngle = highAngle;
     }
 
-    public int getWideAngle() {
+    public float getWideAngle() {
         return wideAngle;
     }
 
@@ -57,6 +57,7 @@ public class Camera {
     	}
     	return false;
     }
+
     public boolean isInCameraView(Point p, Plane plane) {
         Vector2D v = new Vector2D(position, p);
         double numerator = Math.abs(v.getX()* plane.getA() + v.getY()* plane.getB() + v.getZ() * plane.getC()); // tu so
@@ -65,6 +66,7 @@ public class Camera {
         int angle = (int)Math.toDegrees(Math.asin(numerator/denominator))+ 1; // goc giua duong thang va mat phang chua camera
         return angle > (90 - wideAngle) / 2;
     }
+
 
 
 }

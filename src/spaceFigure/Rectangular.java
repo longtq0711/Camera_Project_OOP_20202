@@ -1,7 +1,7 @@
 package spaceFigure;
 import Coordinates.Plane;
 import Coordinates.Point;
-import exception.NotReactangularException;
+import exception.NotRectangularException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class Rectangular {
 	}
 	public Rectangular(List<Point> points) {
 		super();
-		if(!isRectangular(points)) throw new NotReactangularException();
+		if(!isRectangular(points)) throw new NotRectangularException();
 		for(Point point : points) {
 			this.points.add(point);
 			this.xMax = Float.max(xMax, point.getX());

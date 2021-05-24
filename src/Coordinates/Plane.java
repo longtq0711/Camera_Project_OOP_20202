@@ -82,6 +82,8 @@ public class Plane {
 				|| ((A.getY() == B.getY()) && (B.getY() == C.getY()))
 				|| ((A.getZ() == B.getZ()) && (B.getZ() == C.getZ()));
 	}
+
+
 	
 
 

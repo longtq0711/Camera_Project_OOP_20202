@@ -49,5 +49,11 @@ public class Point {
 		float z = (a.getZ()-b.getZ())*(a.getZ()-b.getZ());
 		return (float) Math.sqrt(x + y + z);
 	}
+	public String printPoint(){
+		String rs = "";
+		rs = "( " + this.x + ", " + this.y + ", " +this.z + ")";
+
+		return rs;
+	}
 	
 }
