@@ -51,7 +51,7 @@ public class Point {
 	}
 	public String printPoint(){
 		String rs = "";
-		rs = "( " + this.x + ", " + this.y + ", " +this.z + ")";
+		rs = "(" + this.x + ", " + this.y + ", " +this.z + ")";
 
 		return rs;
 	}

@@ -15,8 +15,6 @@ public class Room extends Rectangular {
     private ArrayList<Camera> cameras = new ArrayList<>();
     private int count = 0;
 
-
-
 	public ArrayList<Camera> getCameras() {
 		return cameras;
 	}
@@ -86,13 +84,15 @@ public class Room extends Rectangular {
 		return false;
 	}
 	public boolean isPutable(Entity entity1, Entity entity2) {
+		int c = 0;
 		Point A1 = new Point(entity2.getXmax(), entity2.getYmax(), entity2.getZmin());
 		Point B1 = new Point(entity2.getXmax(), entity2.getYmin(), entity2.getZmin());
 		Point C1 = new Point(entity2.getXmin(), entity2.getYmax(), entity2.getZmin());
 		Point D1 = new Point(entity2.getXmin(), entity2.getYmin(), entity2.getZmin());
 		if(this.isInRoom(entity2)) {
 			for (int i = 0; i < entity2.points.size(); i++) {
-					if (entity1.isContain(points.get(i))) return false; 
+					if (entity1.isContain(points.get(i))) c++;
+					if (c>4) return false; 
 			}
 			if (entity1.getZmax() == entity2.getZmin()) {
 				if(entity1.isContain(A1) || entity1.isContain(B1) || entity1.isContain(C1) || entity1.isContain(D1)) return true;

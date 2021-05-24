@@ -1,5 +1,7 @@
 
 import Camera.Camera;
+import Coordinates.Line;
+import Coordinates.Plane;
 import Coordinates.Point;
 import readfile.CreateRoom;
 import spaceFigure.Room;
@@ -58,9 +60,9 @@ public class Main {
 					p.setZ(new Scanner(System.in).nextFloat());
 					checkCanBeSee = r.canBeSeen(p);
 					if (checkCanBeSee) {
-						System.out.println("This Point : " + p.printPoint() + " can be see");
+						System.out.println("This Point : " + p.printPoint() + " can be seen");
 					} else {
-						System.out.println("This Point : " + p.printPoint() + " can't be see");
+						System.out.println("This Point : " + p.printPoint() + " can't be seen");
 					}
 				}else {
 					System.out.println("Room is not initialized");
