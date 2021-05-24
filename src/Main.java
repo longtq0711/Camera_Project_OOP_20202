@@ -47,19 +47,23 @@ public class Main {
 				}
 				break;
 			case 2:
-				System.out.println("Input point");
-				p = new Point();
-				System.out.println("X = ");
-				p.setX(new Scanner(System.in).nextFloat());
-				System.out.println("Y = ");
-				p.setY(new Scanner(System.in).nextFloat());
-				System.out.println("Z = ");
-				p.setZ(new Scanner(System.in).nextFloat());
-				checkCanBeSee = r.canBeSeen(p);
-				if(checkCanBeSee){
-					System.out.println("This Point : " + p.printPoint() + " can be see" );
-				}else{
-					System.out.println("This Point : " + p.printPoint() + " can't be see");
+				if(checkCreateRoom == false) {
+					System.out.println("Input point");
+					p = new Point();
+					System.out.println("X = ");
+					p.setX(new Scanner(System.in).nextFloat());
+					System.out.println("Y = ");
+					p.setY(new Scanner(System.in).nextFloat());
+					System.out.println("Z = ");
+					p.setZ(new Scanner(System.in).nextFloat());
+					checkCanBeSee = r.canBeSeen(p);
+					if (checkCanBeSee) {
+						System.out.println("This Point : " + p.printPoint() + " can be see");
+					} else {
+						System.out.println("This Point : " + p.printPoint() + " can't be see");
+					}
+				}else {
+					System.out.println("Room is not initialized");
 				}
 				break;
             default:
