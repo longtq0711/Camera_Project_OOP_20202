@@ -106,22 +106,23 @@ public class Room extends Rectangular {
 		// giao voi 2 mat phang tro len cua vat the
 	
 	public boolean canBeSeen(Point p){
-		List<Plane> roomPlanes = getPlanes();
+		List<Plane> roomPlanes = this.getPlanes();
+		boolean check = false;
 		for(Camera camera: cameras) {
 			for (Plane roomPlane: roomPlanes) {
-			if (camera.isInCameraView(p, roomPlane)) {
+			if (camera.isInCameraView(p, roomPlane)) check = true;
+			}
+			if (check) {
 				Line line = new Line(p, camera.getPosition());
 				for (Entity entity: entities) {
-					if (entity.isContain(p)) return false;
 					count = 0;
 					List<Plane> entityPlanes = entity.getPlanes();
 					for (Plane entityPlane: entityPlanes) {
 						Point i = line.intersection(entityPlane);
-						if(i.isBetween(p, camera.getPosition())) return false;
+						if(i!=null) return (!i.isBetween(p, camera.getPosition()));
 						}
 					}
 				}
-			}
 		}
 		return true;
 	}

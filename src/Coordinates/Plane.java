@@ -1,7 +1,6 @@
 package Coordinates;
 
 public class Plane {
-
 	private float a;
 	private float b;
 	private float c;
