@@ -23,22 +23,19 @@ public class Main {
 		Room r = null;
 		Camera c = null;
 		Point p = null;
-		Boolean checkCreateRoom = true, checkCanBeSee;
+		Boolean checkCreateRoom = false, checkCanBeSee;
 		do {
 			showMenu();
 			choice = new Scanner(System.in).nextInt();
 			switch(choice) {
 			case 1:
 				System.out.println("1. Create Room");
-				if(checkCreateRoom){
+				if(checkCreateRoom == false){
 					CreateRoom createRoom = new CreateRoom();
 					r = createRoom.create();
 					if(r != null) {
 						System.out.println("Create Room Success");
-						r.printListEntities();
-						r.printListCamera();
-						r.printListPoint();
-						checkCreateRoom = false;
+						checkCreateRoom = true;
 					}else {
 						System.out.println("Create Room False");
 					}
@@ -47,7 +44,7 @@ public class Main {
 				}
 				break;
 			case 2:
-				if(checkCreateRoom == false) {
+				if(checkCreateRoom) {
 					System.out.println("Input point");
 					p = new Point();
 					System.out.println("X = ");

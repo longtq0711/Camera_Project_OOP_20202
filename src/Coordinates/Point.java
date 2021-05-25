@@ -64,12 +64,13 @@ public class Point {
 			return false;
 		return true;
 	}
-	
-	public String printPoint(){
-		String rs = "";
-		rs = "(" + this.x + ", " + this.y + ", " +this.z + ")";
 
-		return rs;
+	public String printPoint(){
+		return  "( " + this.x + ", " + this.y + ", " +this.z + ")";
+	}
+	public boolean checkPointExists(Point p){
+
+		return (this.x == p.getX() && this.y == p.getY() && this.z == p.getZ()) ? true : false;
 	}
 	
 }

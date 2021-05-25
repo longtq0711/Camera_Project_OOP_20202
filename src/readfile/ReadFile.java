@@ -1,6 +1,7 @@
 package readfile;
 
 import Camera.Camera;
+import Camera.CheckCamera;
 import Coordinates.Plane;
 import Coordinates.Point;
 import exception.CannotPutEntityToRoomException;
@@ -21,7 +22,7 @@ public class ReadFile {
         Room room = null;
         List<Point> roomPoints = new ArrayList<>();
         int countEntity, countCamera;
-
+        CheckCamera checkCamera = new CheckCamera();
         StringSplit stringSplit = new StringSplit();
         
         try (BufferedReader br = new BufferedReader(new FileReader("src/readfile/input.txt"))) {
@@ -37,10 +38,6 @@ public class ReadFile {
             try {
             	room = new Room(roomPoints);
             	room.printListPoint();
-            	List<Plane> planes = room.getPlanes();
-            	for(Plane plane : planes) {
-            		System.out.println(plane.getA() + " " + plane.getB() + " " + plane.getC() + " " + plane.getD());
-            	}
             } catch (NotRectangularException e) {
             	System.out.println("This room is not rectangular");
             }
@@ -61,8 +58,10 @@ public class ReadFile {
                     room.printListEntities();
                 } catch (NotRectangularException e) {
                 	System.out.println("One of entities is not rectangular");
+                	return null;
                 } catch (CannotPutEntityToRoomException e) {
                 	System.out.println("Fail to add entity");
+                	return null;
                 }
             }
             room.printListEntities();
@@ -74,11 +73,15 @@ public class ReadFile {
                 Camera c = new Camera();
                 for (int j = 0; j < rs3.length; j += 5) {
                     Point p = new Point(Float.parseFloat(rs3[j]), Float.parseFloat(rs3[j + 1]), Float.parseFloat(rs3[j + 2]));
-                    if(Float.parseFloat(rs3[j + 3]) <= 90.0 && Float.parseFloat(rs3[j + 4]) <= 90.0){
+                    if (checkCamera.checkAngle(Float.parseFloat(rs3[j + 3])) && checkCamera.checkAngle(Float.parseFloat(rs3[j + 4]))) {
                         c = new Camera(p, Float.parseFloat(rs3[j + 3]), Float.parseFloat(rs3[j + 4]));
-                    }else throw  new CannotSetCameraInRoomException();
+                    } else throw new CannotSetCameraInRoomException();
                 }
-                room.addCamera(c);
+                if(!checkCamera.checkCameraExists(room,c)){
+                    room.addCamera(c);
+                }else {
+                    System.out.println("This camera: " + c.printCamera() + "is already existed");
+                }
             }
             room.printListCamera();
 
@@ -92,6 +95,7 @@ public class ReadFile {
 
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         } catch (CannotSetCameraInRoomException e) {
             e.printStackTrace();
             return null;

@@ -66,6 +66,9 @@ public class Camera {
         System.out.println("Angle " + angle);// goc giua duong thang va mat phang chua camera
         return angle >= (90 - wideAngle) / 2;
     }
+    public String printCamera(){
+        return this.position.printPoint()+ "High Angle: "+ this.highAngle +" Wide Angle: " +this.wideAngle;
+    }
 
 
 
