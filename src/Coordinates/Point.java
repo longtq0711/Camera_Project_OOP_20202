@@ -1,8 +1,5 @@
 package Coordinates;
 
-import spaceFigure.Rectangular;
-import spaceFigure.Room;
-
 public class Point {
 	float x,y,z;
 	

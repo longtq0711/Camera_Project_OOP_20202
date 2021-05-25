@@ -1,9 +1,6 @@
 package exception;
 
-import java.io.PrintStream;
-
 public class CannotSetCameraInRoomException extends Exception{
-
 
     private static final long serialVersionUID = 1L;
 

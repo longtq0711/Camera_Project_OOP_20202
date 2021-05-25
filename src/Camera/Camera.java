@@ -10,7 +10,6 @@ public class Camera {
     private float highAngle; // goc cao
     private float wideAngle; // goc rong
     private Plane[] around = new Plane[4];
-    private Plane bottom;
     public Camera() {
     }
 

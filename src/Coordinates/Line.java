@@ -17,13 +17,6 @@ public class Line {
 		z = p1.getZ();
 	}
 	
-	public Line(Point p, Vector2D v) {
-		u = v;
-		x = p.getX();
-		y = p.getY();
-		z = p.getZ();
-	}
-	
 	// Getter & Setter
 	public float getX() {
 		return x;
@@ -58,13 +51,13 @@ public class Line {
 	}
 	//Check xem duong thang co giao voi mat phang khong
 
-		public Point intersection(Plane p) {
-			float mau = (p.getA()*u.getX() + p.getB()*u.getY() + p.getC()*u.getZ());
-			if(mau == 0) return null;
-			float t = -(p.getA()*x + p.getB()*y + p.getC()*z + p.getD()) / mau;
-			if(!Float.isNaN(t) || !Float.isInfinite(t)) {
-				return new Point(x + u.getX()*t, y + u.getY()*t, z + u.getZ()*t);
-			}
-			return null;
+	public Point intersection(Plane p) {
+		float mau = (p.getA()*u.getX() + p.getB()*u.getY() + p.getC()*u.getZ());
+		if(mau == 0) return null;
+		float t = -(p.getA()*x + p.getB()*y + p.getC()*z + p.getD()) / mau;
+		if(!Float.isNaN(t) || !Float.isInfinite(t)) {
+			return new Point(x + u.getX()*t, y + u.getY()*t, z + u.getZ()*t);
 		}
+		return null;
+	}
 }

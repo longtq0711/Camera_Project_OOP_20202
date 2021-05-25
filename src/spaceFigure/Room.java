@@ -103,7 +103,6 @@ public class Room extends Rectangular {
 	//Check xem co the nhin thay duoc khong:
 		// 1. Nam trong phong va trong vung hinh chop tao boi camera
 		// 2. Nam ngoai vat the va duong thang noi diem dat camera den diem can xet khong
-		// giao voi 2 mat phang tro len cua vat the
 	
 	public boolean canBeSeen(Point p){
 		List<Plane> roomPlanes = this.getPlanes();
