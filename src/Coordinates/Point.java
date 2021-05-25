@@ -66,7 +66,7 @@ public class Point {
 	}
 
 	public String printPoint(){
-		return  "( " + this.x + ", " + this.y + ", " +this.z + ")";
+		return  "(" + this.x + ", " + this.y + ", " +this.z + ")";
 	}
 	public boolean checkPointExists(Point p){
 

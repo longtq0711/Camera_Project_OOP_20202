@@ -63,7 +63,6 @@ public class Camera {
         double denominator = Math.sqrt(v.getX()*v.getX() + v.getY()*v.getY()
                 + v.getZ()* v.getZ()) * Math.sqrt(plane.getA() * plane.getA() + plane.getB() * plane.getB() + plane.getC() * plane.getC());
         int angle = (int)Math.toDegrees(Math.asin(numerator/denominator));
-        System.out.println("Angle " + angle);// goc giua duong thang va mat phang chua camera
         return angle >= (90 - wideAngle) / 2;
     }
     public String printCamera(){
