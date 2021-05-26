@@ -30,9 +30,18 @@ public class Room extends Rectangular {
 
     public void addEntity(Entity entity) {
     	boolean check = false;
+    	int c = 0;
     	// check if we can add the entity to this room
     	for(Entity currentEntity : entities) {
-    		if(isPutable(currentEntity, entity)) check = true;
+    		if(isPutable(currentEntity, entity)) {
+    			for(Entity checkEntity : entities) {
+    				if(checkEntity.duplicate(entity) || checkEntity.containEntity(entity)) c = 1;
+    			}
+    			if (c == 0) check = true;
+    		} 
+    		if(!currentEntity.duplicate(entity)) {
+    			if((isOnFloor(entity)) && !currentEntity.containEntity(entity)) check = true;
+    		}
     	}	
     	if (count < 1) if(isOnFloor(entity)) check = true;
     	
@@ -69,7 +78,7 @@ public class Room extends Rectangular {
     
 	public boolean isInRoom(Entity entity) {
 		//check xem co nam trong phong khong
-		return this.isContain(entity);
+		return this.has(entity);
 	}
 	public boolean isOnFloor(Entity entity) {
 		if(!isInRoom(entity)) return false;
@@ -84,16 +93,12 @@ public class Room extends Rectangular {
 		return false;
 	}
 	public boolean isPutable(Entity entity1, Entity entity2) {
-		int c = 0;
 		Point A1 = new Point(entity2.getXmax(), entity2.getYmax(), entity2.getZmin());
 		Point B1 = new Point(entity2.getXmax(), entity2.getYmin(), entity2.getZmin());
 		Point C1 = new Point(entity2.getXmin(), entity2.getYmax(), entity2.getZmin());
 		Point D1 = new Point(entity2.getXmin(), entity2.getYmin(), entity2.getZmin());
 		if(this.isInRoom(entity2)) {
-			for (int i = 0; i < entity2.points.size(); i++) {
-					if (entity1.isContain(points.get(i))) c++;
-					if (c>4) return false; 
-			}
+			if (entity1.containEntity(entity2)) return false;
 			if (entity1.getZmax() == entity2.getZmin()) {
 				if(entity1.isContain(A1) || entity1.isContain(B1) || entity1.isContain(C1) || entity1.isContain(D1)) return true;
 			}

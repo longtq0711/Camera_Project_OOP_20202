@@ -2,7 +2,6 @@ package readfile;
 
 import Camera.Camera;
 import Camera.CheckCamera;
-import Coordinates.Plane;
 import Coordinates.Point;
 import exception.CannotPutEntityToRoomException;
 import exception.CannotSetCameraInRoomException;
@@ -55,7 +54,6 @@ public class ReadFile {
 				try {
                     Entity entity = new Entity(entityPoints);
                     room.addEntity(entity);
-                    room.printListEntities();
                 } catch (NotRectangularException e) {
                 	System.out.println("One of entities is not rectangular");
                 	return null;

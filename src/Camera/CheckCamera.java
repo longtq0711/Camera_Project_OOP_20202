@@ -6,7 +6,6 @@ import java.util.List;
 
 public class CheckCamera {
     public boolean checkCameraExists(Room room, Camera camera){
-        boolean rs;
         List<Camera> cameraList = room.getCameras();
         if(!cameraList.isEmpty()){
             for (Camera c : cameraList){

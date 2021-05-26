@@ -1,8 +1,5 @@
 package spaceFigure;
-import java.util.ArrayList;
 import java.util.List;
-
-import Coordinates.Plane;
 import Coordinates.Point;
 public class Entity extends Rectangular {
 	
@@ -17,7 +14,6 @@ public class Entity extends Rectangular {
 			}
  
 		return rs;
- 
 	}
 
 }

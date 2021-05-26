@@ -123,10 +123,33 @@ public class Rectangular {
 		}
 		return false;
 	}
-	
-	public boolean isContain(Rectangular rectangular) {
+	public boolean containEntity(Entity entity) {
+		float x1 = entity.getXmax();
+		float x2 = entity.getXmin();
+		float y1 = entity.getYmax();
+		float y2 = entity.getYmin();
+		float z1 = entity.getZmax();
+		float z2 = entity.getZmin();
+		if (x1 < this.xMax && x1 > this.xMin || x2 < this.xMax && x2 > this.xMin) {
+			if (y1 < this.yMax && y1 > this.yMin || y2 < this.yMax && y2 > this.yMin) {
+				if (z1 < this.zMax && z1 > this.zMin || z2 < this.zMax && z2 > this.zMin) 
+					return true;
+			}
+		}
+		return false;
+	}
+	public boolean duplicate(Rectangular rectangular) {
+		int count = 0;
 		for(Point point : rectangular.points) {
-			if(!this.isContain(point)) return false; 
+			if(this.isContain(point)) count++; 
+		}
+		if (count > 4) return true;
+		return false;
+	}
+
+	public boolean has(Rectangular rectangular) {
+		for(Point point : rectangular.points) {
+			if(this.isContain(point)) return true; 
 		}
 		return true;
 	}
