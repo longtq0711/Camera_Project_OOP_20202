@@ -1,5 +1,4 @@
 
-import Camera.Camera;
 import Coordinates.Point;
 import readfile.CreateRoom;
 import spaceFigure.Room;
@@ -19,10 +18,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		int choice;
-		int n = 0, check = 0;
 		Room r = null;
-		Camera c = null;
-		Point p = null;
+		Point p;
 		Boolean checkCreateRoom = false, checkCanBeSee;
 		do {
 			showMenu();

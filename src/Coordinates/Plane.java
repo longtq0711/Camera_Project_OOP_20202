@@ -66,21 +66,7 @@ public class Plane {
 			 area = (float)Math.sqrt(a * a + b * b + c * c);
 	}
 
-	public boolean isInThePlane(Point A) { // Kiem tra diem thuoc mat phang
-		return (a * A.getX() + b * A.getY() + c * A.getZ()) == -d;
-	}
 
-	public float distance(Point A) { // Khoang cach tu diem A den mat phang
-		d = Math.abs(a * A.getX() + b * A.getY() + c * A.getZ());// ax + by + cz = d
-		float e = (float)Math.sqrt(a * a + b * b + c * c); // Mau so
-		return d / e;
-	}
-
-	public boolean isTruePlane(Point A, Point B, Point C) { // Kiem tra xem 3 diem co nam o mat phang phu hop khong ( may day, mat ben)
-		return ((A.getX() == B.getX()) && (B.getX() == C.getX()))
-				|| ((A.getY() == B.getY()) && (B.getY() == C.getY()))
-				|| ((A.getZ() == B.getZ()) && (B.getZ() == C.getZ()));
-	}
 
 
 	

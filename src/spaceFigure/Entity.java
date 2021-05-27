@@ -8,12 +8,10 @@ public class Entity extends Rectangular {
 	}
 
 	public String printListPoint (){
-		String rs = "";
-		for (int i = 0; i < points.size(); i++) {
-			rs += "(" + points.get(i).getX() + ", " + points.get(i).getY() + ", " + points.get(i).getZ() +") ";
-			}
+		StringBuilder rs = new StringBuilder();
+		for (Point point : points) rs.append("(").append(point.getX()).append(", ").append(point.getY()).append(", ").append(point.getZ()).append(") ");
  
-		return rs;
+		return rs.toString();
 	}
 
 }
