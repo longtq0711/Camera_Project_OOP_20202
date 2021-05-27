@@ -13,8 +13,6 @@ public class Room extends Rectangular {
 
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Camera> cameras = new ArrayList<>();
-    private int count = 0;
-
 	public ArrayList<Camera> getCameras() {
 		return cameras;
 	}
@@ -30,24 +28,19 @@ public class Room extends Rectangular {
 
     public void addEntity(Entity entity) {
     	boolean check = false;
-    	int c = 0;
-    	// check if we can add the entity to this room
+    	if (!isInRoom(entity)) throw new CannotPutEntityToRoomException();
+    	// check trung voi cac entity hien tai
+    	for (Entity currentEntity : entities) {
+    		if(currentEntity.duplicate(entity)) throw new CannotPutEntityToRoomException();
+    	}
+    	// check nam tren san
+    	if(isOnFloor(entity)) check = true;
+    	// check nam tren vat khac
     	for(Entity currentEntity : entities) {
-    		if(isPutable(currentEntity, entity)) {
-    			for(Entity checkEntity : entities) {
-    				if(checkEntity.duplicate(entity) || checkEntity.containEntity(entity)) c = 1;
-    			}
-    			if (c == 0) check = true;
-    		} 
-    		if(!currentEntity.duplicate(entity)) {
-    			if((isOnFloor(entity)) && !currentEntity.containEntity(entity)) check = true;
-    		}
-    	}	
-    	if (count < 1) if(isOnFloor(entity)) check = true;
-    	
+    		if(isPutable(currentEntity, entity)) check = true;
+    	}
     	if(!check) throw new CannotPutEntityToRoomException();
         entities.add(entity);
-        count++;
     }
 
     public void printListCamera() {
@@ -81,7 +74,6 @@ public class Room extends Rectangular {
 		return this.has(entity);
 	}
 	public boolean isOnFloor(Entity entity) {
-		if(!isInRoom(entity)) return false;
 		//check xem co nam tren san khong
 		int count = 0;
 		if (this.isInRoom(entity)) {
@@ -97,11 +89,8 @@ public class Room extends Rectangular {
 		Point B1 = new Point(entity2.getXmax(), entity2.getYmin(), entity2.getZmin());
 		Point C1 = new Point(entity2.getXmin(), entity2.getYmax(), entity2.getZmin());
 		Point D1 = new Point(entity2.getXmin(), entity2.getYmin(), entity2.getZmin());
-		if(this.isInRoom(entity2)) {
-			if (entity1.containEntity(entity2)) return false;
 			if (entity1.getZmax() == entity2.getZmin()) {
 				if(entity1.isContain(A1) || entity1.isContain(B1) || entity1.isContain(C1) || entity1.isContain(D1)) return true;
-			}
 		}
 		return false;
 	}
@@ -111,6 +100,7 @@ public class Room extends Rectangular {
 	
 	public boolean canBeSeen(Point p){
 		List<Plane> roomPlanes = this.getPlanes();
+		int count;
 		boolean check = false;
 		for(Camera camera: cameras) {
 			for (Plane roomPlane: roomPlanes) {

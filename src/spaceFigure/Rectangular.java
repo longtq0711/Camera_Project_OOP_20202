@@ -82,7 +82,23 @@ public class Rectangular {
 		planes.add(new Plane(plane5.get(0),plane5.get(1), plane5.get(2)));
 		planes.add(new Plane(plane6.get(0),plane6.get(1), plane6.get(2))); // mat day se o vi tri cuoi cung trong array list
 	}
-	
+	public boolean isRectangle(ArrayList<Point> P)
+			{
+			double cx = 0, cy = 0;
+			double dd1,dd2,dd3,dd4;
+			for (Point p: P) {
+				cx += p.getX();
+				cy += p.getY();
+			}
+			cx=cx/4;
+			cy=cy/4;
+		
+			dd1 = (cx-P.get(0).getX())*(cx-P.get(0).getX()) + (cy-P.get(0).getY())*(cy-P.get(0).getY());
+			dd2 = (cx-P.get(1).getX())*(cx-P.get(1).getX()) + (cy-P.get(1).getY())*(cy-P.get(1).getY());
+			dd3 = (cx-P.get(2).getX())*(cx-P.get(2).getX()) + (cy-P.get(2).getY())*(cy-P.get(2).getY());
+			dd4 = (cx-P.get(3).getX())*(cx-P.get(3).getX()) + (cy-P.get(3).getY())*(cy-P.get(3).getY());
+			return dd1==dd2 && dd1==dd3 && dd1==dd4;
+			}
 	public boolean isRectangular(List<Point> points){
 		ArrayList<Point> P1 = new ArrayList<>();
 		ArrayList<Point> P2 = new ArrayList<>();
@@ -101,13 +117,12 @@ public class Rectangular {
 				}
 			}
 		}
-
+		if(!isRectangle(P1)) return false;
 		for (Point value : P1) {
 			for (Point point : P2) {
 				if ((value.getX() == point.getX()) && (value.getY() == point.getY())) {
 					k++;
 				}
-
 			}
 		}
 		return k == 4;
@@ -118,6 +133,15 @@ public class Rectangular {
 		if (point.getX() <= this.xMax && point.getX() >= this.xMin) {
 			if (point.getY() <= this.yMax && point.getY() >= this.yMin) {
 				if (point.getZ() <= this.zMax && point.getZ() >= this.zMin) 
+					return true;
+			}
+		}
+		return false;
+	}
+	public boolean contain(Point point) {
+		if (point.getX() < this.xMax && point.getX() > this.xMin) {
+			if (point.getY() < this.yMax && point.getY() > this.yMin) {
+				if (point.getZ() < this.zMax && point.getZ() > this.zMin) 
 					return true;
 			}
 		}
@@ -139,18 +163,19 @@ public class Rectangular {
 		return false;
 	}
 	public boolean duplicate(Rectangular rectangular) {
-		int count = 0;
-		for(Point point : rectangular.points) {
-			if(this.isContain(point)) count++; 
-		}
-		if (count > 4) return true;
-		return false;
+		if(this.xMax <= rectangular.xMin) return false;
+		if(this.yMax <= rectangular.yMin) return false;
+		if(this.zMax <= rectangular.zMin) return false;
+		if(this.xMin >= rectangular.xMax) return false;
+		if(this.yMin >= rectangular.yMax) return false;
+		if(this.zMin >= rectangular.zMax) return false;
+		return true;
 	}
 
 	public boolean has(Rectangular rectangular) {
 		for(Point point : rectangular.points) {
 			if(this.isContain(point)) return true; 
 		}
-		return true;
+		return false;
 	}
 }
