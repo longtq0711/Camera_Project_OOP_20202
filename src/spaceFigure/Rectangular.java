@@ -138,6 +138,10 @@ public class Rectangular {
 		}
 		return false;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> a85f63c7c6602a13dd59f31702508c2a473248a2
 	public boolean duplicate(Rectangular rectangular) {
 		//check 2 vat the co giao nhau khong
 		if(this.xMax <= rectangular.xMin) return false;

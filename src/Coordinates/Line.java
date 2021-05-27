@@ -18,6 +18,7 @@ public class Line {
 	}
 	
 	// Getter & Setter
+<<<<<<< HEAD
 	public float getX() {
 		return a;
 	}
@@ -39,6 +40,31 @@ public class Line {
 	}
 
 	public void setZ(float z) {
+=======
+
+
+	public float getA() {
+		return a;
+	}
+
+	public void setA(float a) {
+		this.a = a;
+	}
+
+	public float getB() {
+		return b;
+	}
+
+	public void setB(float b) {
+		this.b = b;
+	}
+
+	public float getC() {
+		return c;
+	}
+
+	public void setC(float c) {
+>>>>>>> a85f63c7c6602a13dd59f31702508c2a473248a2
 		this.c = c;
 	}
 
