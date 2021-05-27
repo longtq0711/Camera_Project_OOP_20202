@@ -1,6 +1,4 @@
 package Coordinates;
-
-
 public class Vector2D {
 	private float x;
 	private float y;
@@ -37,11 +35,5 @@ public class Vector2D {
 		y = v1.getZ() * v2.getX() - v1.getX() * v2.getZ();//a3b1 - a1b3
 		z = v1.getX() * v2.getY() - v1.getY() * v2.getX();//a1b2 - a2b1
 	}
-
-
-
-
-
-
 
 }

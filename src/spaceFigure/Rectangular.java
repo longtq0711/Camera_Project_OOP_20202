@@ -129,7 +129,7 @@ public class Rectangular {
 	}
 	
 	public boolean isContain(Point point) {
-		// TODO check
+		// TODO check 1 diem nam trong room
 		if (point.getX() <= this.xMax && point.getX() >= this.xMin) {
 			if (point.getY() <= this.yMax && point.getY() >= this.yMin) {
 				if (point.getZ() <= this.zMax && point.getZ() >= this.zMin) 
@@ -138,31 +138,8 @@ public class Rectangular {
 		}
 		return false;
 	}
-	public boolean contain(Point point) {
-		if (point.getX() < this.xMax && point.getX() > this.xMin) {
-			if (point.getY() < this.yMax && point.getY() > this.yMin) {
-				if (point.getZ() < this.zMax && point.getZ() > this.zMin) 
-					return true;
-			}
-		}
-		return false;
-	}
-	public boolean containEntity(Entity entity) {
-		float x1 = entity.getXmax();
-		float x2 = entity.getXmin();
-		float y1 = entity.getYmax();
-		float y2 = entity.getYmin();
-		float z1 = entity.getZmax();
-		float z2 = entity.getZmin();
-		if (x1 < this.xMax && x1 > this.xMin || x2 < this.xMax && x2 > this.xMin) {
-			if (y1 < this.yMax && y1 > this.yMin || y2 < this.yMax && y2 > this.yMin) {
-				if (z1 < this.zMax && z1 > this.zMin || z2 < this.zMax && z2 > this.zMin) 
-					return true;
-			}
-		}
-		return false;
-	}
 	public boolean duplicate(Rectangular rectangular) {
+		//check 2 vat the co giao nhau khong
 		if(this.xMax <= rectangular.xMin) return false;
 		if(this.yMax <= rectangular.yMin) return false;
 		if(this.zMax <= rectangular.zMin) return false;
