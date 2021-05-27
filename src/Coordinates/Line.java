@@ -2,9 +2,9 @@ package Coordinates;
 
 public class Line {
 	
-	private float x;
-	private float y;
-	private float z;
+	private float a;
+	private float b;
+	private float c;
 	
 	private Vector2D u; // Vector chi phuong
 
@@ -12,34 +12,36 @@ public class Line {
 	
 	public Line(Point p1, Point p2) {
 		u = new Vector2D(p1, p2);
-		x = p1.getX();
-		y = p1.getY();
-		z = p1.getZ();
+		a = p1.getX();
+		b = p1.getY();
+		c = p1.getZ();
 	}
 	
 	// Getter & Setter
-	public float getX() {
-		return x;
+
+
+	public float getA() {
+		return a;
 	}
 
-	public void setX(float x) {
-		this.x = x;
+	public void setA(float a) {
+		this.a = a;
 	}
 
-	public float getY() {
-		return y;
+	public float getB() {
+		return b;
 	}
 
-	public void setY(float y) {
-		this.y = y;
+	public void setB(float b) {
+		this.b = b;
 	}
 
-	public float getZ() {
-		return z;
+	public float getC() {
+		return c;
 	}
 
-	public void setZ(float z) {
-		this.z = z;
+	public void setC(float c) {
+		this.c = c;
 	}
 
 	public Vector2D getU() {
@@ -54,9 +56,9 @@ public class Line {
 	public Point intersection(Plane p) {
 		float mau = (p.getA()*u.getX() + p.getB()*u.getY() + p.getC()*u.getZ());
 		if(mau == 0) return null;
-		float t = -(p.getA()*x + p.getB()*y + p.getC()*z + p.getD()) / mau;
+		float t = -(p.getA()*a + p.getB()*b + p.getC()*c + p.getD()) / mau;
 		if(!Float.isNaN(t) || !Float.isInfinite(t)) {
-			return new Point(x + u.getX()*t, y + u.getY()*t, z + u.getZ()*t);
+			return new Point(a + u.getX()*t, b + u.getY()*t, c + u.getZ()*t);
 		}
 		return null;
 	}
